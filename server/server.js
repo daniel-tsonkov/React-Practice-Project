@@ -8,5 +8,5 @@ app.use(bodyParser.json());
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
-    console.log(`SERVER USING ${port}`);
+    console.log(`SERVER RUNING ON PORT${port}`);
 })
