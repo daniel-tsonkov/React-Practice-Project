@@ -1,11 +1,6 @@
 # Logs
 logs
 *.log
-.~lock.Instructions.odt#
-.$Diagram.drawio.bkp
-#.env #for now is enable upload to GIT
-.odt#
-.dtmp
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
