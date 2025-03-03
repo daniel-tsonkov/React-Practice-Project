@@ -79,6 +79,19 @@
         <mxCell id="JTrbYuYFS1n6ePO4l3gh-19" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;article.controller.js&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
           <mxGeometry x="310" y="485" width="85" height="25" as="geometry" />
         </mxCell>
+        <mxCell id="JTrbYuYFS1n6ePO4l3gh-20" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="JTrbYuYFS1n6ePO4l3gh-11" target="JTrbYuYFS1n6ePO4l3gh-18">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="230" y="405" as="sourcePoint" />
+            <mxPoint x="280" y="355" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="425" y="323" />
+              <mxPoint x="425" y="463" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JTrbYuYFS1n6ePO4l3gh-21" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;register&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="415" y="345" width="60" height="30" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
