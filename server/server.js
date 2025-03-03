@@ -5,7 +5,8 @@ require('dotenv').config();
 
 const bodyParser = require('body-parser'); //using as middleware
 
-const mongoUri = `mongodb+srv://${process.env.DB_HOST}`;
+const mongoUri = `mongodb://${process.env.DB_HOST}`;
+mongoose.connect(mongoUri);
 
 //PARSING
 app.use(bodyParser.json());
