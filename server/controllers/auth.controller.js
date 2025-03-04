@@ -2,23 +2,23 @@ const { authService } = require('../services');
 const httpStatus = require('http-status');
 
 const authController = {
-    async register(req, res, next) {
+    async register(req, res) {
         try {
             const { email, password } = req.body;
             const user = await authService.createUser(email, password);
             const token = await authService.genAuthToken(user);
 
-            //SEND FERIFICAION EMAIL
-
+            /// SEND VERIFICATION EMAIL
             res.cookie('x-access-token', token)
-                .status(httpStatus.CREATED).send({
+                .status(201).send({
                     user,
                     token
                 })
-        } catch (err) {
+        } catch (error) {
             res.status(httpStatus.BAD_REQUEST).send(error.message);
         }
     },
-};
+}
+
 
 module.exports = authController;

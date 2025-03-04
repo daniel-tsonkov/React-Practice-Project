@@ -4,20 +4,19 @@ const { User } = require('../models/user');
 const createUser = async (email, password) => {
     try {
         if (await User.emailTaken(email)) {
-            throw new Error('Email taken!!!');
+            throw new Error('Sorry email taken')
         }
 
         const user = new User({
             email,
             password
         });
-
         await user.save();
         return user;
-    } catch (err) {
-        throw err;
+    } catch (error) {
+        throw error;
     }
-};
+}
 
 const genAuthToken = (user) => {
     const token = user.generateAuthToken();
