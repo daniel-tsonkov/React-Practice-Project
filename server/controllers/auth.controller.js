@@ -10,6 +10,11 @@ const authController = {
 
             //SEND FERIFICAION EMAIL
 
+            res.cookie('x-access-token', token)
+                .status(httpStatus.CREATED).send({
+                    user,
+                    token
+                })
         } catch (err) {
             res.status(httpStatus.BAD_REQUEST).send(error.message);
         }
