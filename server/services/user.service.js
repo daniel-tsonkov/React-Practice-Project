@@ -1,10 +1,10 @@
 const httpStatus = require('http-status');
 const { User } = require('../models/user')
 
-const anyFunc = async () => {
-    return true;
+const findUserByEmail = async (email) => {
+    return await User.findOne({ email });
 }
 
 module.exports = {
-    anyFunc
+    findUserByEmail
 }
