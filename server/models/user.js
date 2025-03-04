@@ -65,16 +65,20 @@ userSchema.pre('save', async function (next) {
 userSchema.statics.emailTaken = async function (email) {
     const user = await this.findOne({ email });
     return !!user;
-}
+};
 
 userSchema.methods.generateAuthToken = function () {
     let user = this;
     const userObj = { sub: user._id.toHexString(), email: user.email };
     const token = jwt.sign(userObj, process.env.DB_SECRET, { expiresIn: '1d' })
     return token;
-}
+};
 
-
+userSchema.methods.comparePassword = async function (candidatePassword) {
+    const user = this;
+    const match = await bcrypt.compare(candidatePassword, user.password);
+    return match;
+};
 
 const User = mongoose.model('User', userSchema);
 module.exports = { User }
