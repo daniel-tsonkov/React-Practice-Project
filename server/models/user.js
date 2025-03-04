@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const bcrypt = require('bcrypt');
 require('dotenv').config();
 
 //here we define evrithing needen for user
@@ -48,6 +49,16 @@ const userSchema = mongoose.Schema({
         default: false
     }
 });
+
+userSchema.pre('save', async function (next) {
+    let user = this;
+
+    if (user.isModified('password')) {
+
+    };
+
+    next();
+})
 
 userSchema.statics.emailTaken = async function (email) {
     const user = await this.findOne({ email });
