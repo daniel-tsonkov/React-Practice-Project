@@ -4,7 +4,7 @@ const { User } = require('../models/user');
 const createUser = async (email, password) => {
     try {
         if (await User.emailTaken(email)) {
-            throw new Error('Sorry email taken')
+            throw new Error('Sorry email taken!!!')
         }
 
         const user = new User({
@@ -23,7 +23,19 @@ const genAuthToken = (user) => {
     return token;
 }
 
+const signInWithEmailAndPassowr = async (email, password) => {
+    try {
+        //check email
+
+
+        //validate password
+    } catch (err) {
+        throw err;
+    }
+}
+
 module.exports = {
     createUser,
-    genAuthToken
+    genAuthToken,
+    signInWithEmailAndPassowr
 }
