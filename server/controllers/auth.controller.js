@@ -6,6 +6,10 @@ const authController = {
         try {
             const { email, password } = req.body;
             const user = await authService.createUser(email, password);
+            const token = await authService.genAuthToken(user);
+
+            //SEND FERIFICAION EMAIL
+
         } catch (err) {
             res.status(httpStatus.BAD_REQUEST).send(error.message);
         }
