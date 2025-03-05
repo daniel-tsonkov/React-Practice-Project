@@ -1,11 +1,13 @@
 const httpStatus = require('http-status');
 const { User } = require('../models/user');
 const userService = require('./user.service');
+const { ApiError } = require('../middleware/apiError');
 
 const createUser = async (email, password) => {
     try {
         if (await User.emailTaken(email)) {
-            throw new Error('Sorry email taken')
+            //throw new Error('Sorry email taken')
+            throw new ApiError(httpStatus.BAD_REQUEST, 'Sorry email taken!!!');
         };
 
         const user = new User({

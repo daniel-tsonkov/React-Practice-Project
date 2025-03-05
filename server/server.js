@@ -8,7 +8,9 @@ const bodyParser = require('body-parser'); //using as middleware
 const { xss } = require('express-xss-sanitizer');
 const mongoSanitize = require('express-mongo-sanitize');
 
-const routes = require('./routes')
+const routes = require('./routes');
+
+const { handleError } = require('./middleware/apiError')
 
 const mongoUri = `mongodb://${process.env.DB_HOST}`;
 mongoose.connect(mongoUri);
@@ -22,6 +24,11 @@ app.use(mongoSanitize());
 
 //ROUTES
 app.use('/api', routes);
+
+//ERROR HANDLING
+app.use((err, req, res, next) => {
+    handleError(err, res);
+});
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
