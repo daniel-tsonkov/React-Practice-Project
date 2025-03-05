@@ -29,6 +29,9 @@ const authController = {
             //res.status(httpStatus.BAD_REQUEST).send(error.message);
             next(error);
         }
+    },
+    async isauth(req, res, next) {
+        res.json({ ok: 'DONE!!!' });
     }
 }
 
