@@ -30,7 +30,8 @@ const signInWithEmailAndPassword = async (email, password) => {
     try {
         const user = await userService.findUserByEmail(email);
         if (!user) {
-            throw new Error('Sorry BAD email');
+            //throw new Error('Sorry BAD email');
+            throw new ApiError(httpStatus.BAD_REQUEST, 'Sorry BAD email!!!');
         }
         /// validate password
         if (!(await user.comparePassword(password))) {
