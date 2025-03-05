@@ -3,14 +3,18 @@ const { ApiError } = require('./apiError');
 const httpStatus = require('http-status');
 const { verify } = require('jsonwebtoken');
 
+const verify = (req, res, resolve, reject) => async (err, user) => {
+    if (err || !user) {
+        return reject(new ApiError(httpStatus.UNAUTHORIZED, 'Sorry unauthorized'));
+    }
+}
 
 const auth = () => async (req, res, next) => {
     return new Promise((resolve, reject) => {
-
+        passport.authenticate('jwt', { session: false }, verify(req, res, resolve, reject))(req, res, next);
     })
         .then(() => next())
         .catch((err) => next(err))
-    passport.authenticate('jwt', { session: false }, verify(req, res))(req, res, next)
 };
 
 module.exports = auth;
