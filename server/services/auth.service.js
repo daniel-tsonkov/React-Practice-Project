@@ -6,7 +6,7 @@ const createUser = async (email, password) => {
     try {
         if (await User.emailTaken(email)) {
             throw new Error('Sorry email taken')
-        }
+        };
 
         const user = new User({
             email,
@@ -17,12 +17,12 @@ const createUser = async (email, password) => {
     } catch (error) {
         throw error;
     }
-}
+};
 
 const genAuthToken = (user) => {
     const token = user.generateAuthToken();
     return token;
-}
+};
 
 const signInWithEmailAndPassword = async (email, password) => {
     try {
@@ -38,7 +38,7 @@ const signInWithEmailAndPassword = async (email, password) => {
     } catch (error) {
         throw error;
     }
-}
+};
 
 
 module.exports = {
