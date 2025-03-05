@@ -18,7 +18,7 @@ const authController = {
             next(error);
         }
     },
-    async signin(req, res) {
+    async signin(req, res, next) {
         try {
             const { email, password } = req.body;
             const user = await authService.signInWithEmailAndPassword(email, password)
@@ -26,7 +26,8 @@ const authController = {
 
             res.cookie('x-access-token', token).send({ user, token });
         } catch (error) {
-            res.status(httpStatus.BAD_REQUEST).send(error.message);
+            //res.status(httpStatus.BAD_REQUEST).send(error.message);
+            next(error);
         }
     }
 }
