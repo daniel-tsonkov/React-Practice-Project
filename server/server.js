@@ -10,7 +10,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 
 const routes = require('./routes');
 
-const { handleError } = require('./middleware/apiError')
+const { handleError, convertToApiError } = require('./middleware/apiError')
 
 const mongoUri = `mongodb://${process.env.DB_HOST}`;
 mongoose.connect(mongoUri);
@@ -26,6 +26,8 @@ app.use(mongoSanitize());
 app.use('/api', routes);
 
 //ERROR HANDLING
+app.use(convertToApiError); //convert error from server
+
 app.use((err, req, res, next) => {
     handleError(err, res);
 });
