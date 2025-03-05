@@ -7,7 +7,7 @@ class ApiError extends Error {
         this.statusCode = statusCode;
         this.message = message;
     }
-}
+};
 
 const handleError = (err, res) => {
     const { statusCode, message } = err;
@@ -17,6 +17,19 @@ const handleError = (err, res) => {
         statusCode,
         message
     });
+};
+
+const convertToApiError = (err, req, res, next) => {
+    let error = err;
+
+    if (!(error instanceof ApiError)) {
+        const statusCode = error.statusCode || error instanceof mongoose.Error ?
+            httpStatus.BAD_REQUEST : httpStatus.INTERNAL_SERVER_ERROR;
+        const message = error.message || httpStatus[statusCode];
+        error = new ApiError(statusCode, message);
+    }
+
+    next(error);
 }
 
 module.exports = {
