@@ -6,6 +6,7 @@ const verify = (req, res, resolve, reject) => async (err, user) => {
     if (err || !user) {
         return reject(new ApiError(httpStatus.UNAUTHORIZED, 'Sorry unauthorized!!!'));
     }
+    req.user = user;
 
     resolve();
 }

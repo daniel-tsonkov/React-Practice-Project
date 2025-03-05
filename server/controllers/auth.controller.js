@@ -31,7 +31,7 @@ const authController = {
         }
     },
     async isauth(req, res, next) {
-        res.json({ ok: 'DONE!!!' });
+        res.json(req.user);
     }
 }
 
