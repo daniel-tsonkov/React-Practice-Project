@@ -9,8 +9,18 @@ const jwtOptions = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
 }
 
-const jwtVerify = async () => {
+const jwtVerify = async (payload, done) => {
+    try {
+        const user = await User.findById(payload.sub);
 
+        if (!user) {
+            return (null, false);
+        }
+
+        done(null, user);
+    } catch (err) {
+        done(err, false);
+    }
 }
 
 const jwtStrategy = new Strategy(jwtOptions, jwtVerify);
