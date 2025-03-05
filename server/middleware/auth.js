@@ -1,12 +1,13 @@
 const passport = require('passport');
 const { ApiError } = require('./apiError');
 const httpStatus = require('http-status');
-const { verify } = require('jsonwebtoken');
 
 const verify = (req, res, resolve, reject) => async (err, user) => {
     if (err || !user) {
-        return reject(new ApiError(httpStatus.UNAUTHORIZED, 'Sorry unauthorized'));
+        return reject(new ApiError(httpStatus.UNAUTHORIZED, 'Sorry unauthorized!!!'));
     }
+
+    resolve();
 }
 
 const auth = () => async (req, res, next) => {
