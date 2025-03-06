@@ -18,7 +18,8 @@ let grantsObject = {
         //     'read:any': ['*']
         // }
         profile: {
-            'read:own': ['*', '!password', '!_id']
+            'read:own': ['*', '!password', '!_id'],
+            'update:own': ['*', '!password', '!_id'],
         }
     }
 };

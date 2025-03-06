@@ -18,6 +18,13 @@ const userController = {
         } catch (err) {
             next(err);
         }
+    },
+    async updateProfilq(req, res, next) {
+        try {
+
+        } catch (err) {
+            console.log(err);
+        }
     }
 };
 
