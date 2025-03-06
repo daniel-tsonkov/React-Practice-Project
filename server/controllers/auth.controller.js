@@ -9,32 +9,33 @@ const authController = {
             const token = await authService.genAuthToken(user);
 
             /// SEND VERIFICATION EMAIL
+
             res.cookie('x-access-token', token)
-                .status(201).send({
+                .status(httpStatus.CREATED).send({
                     user,
                     token
-                });
+                })
         } catch (error) {
-            next(error);
+            next(error)
         }
     },
     async signin(req, res, next) {
         try {
             const { email, password } = req.body;
-            const user = await authService.signInWithEmailAndPassword(email, password)
+            const user = await authService.signInWithEmailAndPassword(email, password);
             const token = await authService.genAuthToken(user);
 
-            res.cookie('x-access-token', token).send({ user, token });
+            res.cookie('x-access-token', token).send({ user, token })
         } catch (error) {
             //res.status(httpStatus.BAD_REQUEST).send(error.message);
-            next(error);
+            next(error)
         }
     },
     async isauth(req, res, next) {
         res.json(req.user);
     },
     async testrole(req, res, next) {
-        res.json({ OK: 'YES!!!' });
+        res.json(req.user);
     }
 }
 

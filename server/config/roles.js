@@ -20,4 +20,4 @@ let grantsObject = {
 
 const roles = new AccessControl(grantsObject);
 
-module.exports = roles;
+module.exports = { roles };
