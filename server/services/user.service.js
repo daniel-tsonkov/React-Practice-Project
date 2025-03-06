@@ -45,10 +45,17 @@ const updateUserEmail = async (req) => {
             {
                 "$set": {
                     email: req.body.newemail,
+                    verified: false
                 }
             },
             { new: true }
         );
+
+        if (!user) {
+            throw new ApiError(httpStatus.NOT_FOUND, 'User not found!!!');
+        };
+
+        return user;
     } catch (err) {
         throw err;
     }
