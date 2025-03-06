@@ -10,5 +10,6 @@ const findUserById = async (_id) => {
 }
 
 module.exports = {
-    findUserByEmail
+    findUserByEmail,
+    findUserById
 }
