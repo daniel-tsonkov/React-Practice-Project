@@ -34,8 +34,24 @@ const updateUserProfile = async (req) => {
     }
 };
 
-const updateUserEmail = () => {
+const updateUserEmail = async (req) => {
+    try {
+        if (await User.emailTaken(req.body.newemail)) {
+            throw new ApiError(httpStatus.NOT_FOUND, 'Sorry email taken!!');
+        }
 
+        const user = await User.findOneAndUpdate(
+            { _id: req.user._id, email: req.user.email },
+            {
+                "$set": {
+                    email: req.body.newemail,
+                }
+            },
+            { new: true }
+        );
+    } catch (err) {
+        throw err;
+    }
 }
 
 module.exports = {
