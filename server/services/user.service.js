@@ -64,5 +64,6 @@ const updateUserEmail = async (req) => {
 module.exports = {
     findUserByEmail,
     findUserById,
-    updateUserProfile
+    updateUserProfile,
+    updateUserEmail
 }
