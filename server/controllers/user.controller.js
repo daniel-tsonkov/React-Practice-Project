@@ -1,9 +1,13 @@
+const httpStatus = require('http-status');
+const { ApiError } = require('../middleware/apiError');
+
+
 const userController = {
-    async register(req, res, next) {
+    async profile(req, res, next) {
         try {
 
         } catch (err) {
-            console.log(err);
+            next(err);
         }
     }
 };
