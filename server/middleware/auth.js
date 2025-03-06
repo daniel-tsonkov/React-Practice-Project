@@ -8,6 +8,8 @@ const verify = (req, res, resolve, reject) => async (err, user) => {
     }
     req.user = user;
 
+
+
     resolve();
 }
 
