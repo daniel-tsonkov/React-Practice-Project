@@ -5,7 +5,7 @@ const { ApiError } = require('../middleware/apiError');
 const userController = {
     async profile(req, res, next) {
         try {
-
+            const user = await userService.findUserById();
         } catch (err) {
             next(err);
         }
