@@ -32,6 +32,10 @@ const updateUserProfile = async (req) => {
     } catch (err) {
         throw err;
     }
+};
+
+const updateUserEmail = () => {
+
 }
 
 module.exports = {

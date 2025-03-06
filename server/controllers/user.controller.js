@@ -26,6 +26,13 @@ const userController = {
         } catch (err) {
             next(err);
         }
+    },
+    async updateUserEmail(req, res, next) {
+        try {
+            const user = await userService.updateUserEmail(req);
+        } catch (err) {
+            next(err);
+        }
     }
 };
 
