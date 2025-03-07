@@ -10,6 +10,7 @@ const authController = {
 
             /// SEND VERIFICATION EMAIL
 
+
             res.cookie('x-access-token', token)
                 .status(httpStatus.CREATED).send({
                     user,
