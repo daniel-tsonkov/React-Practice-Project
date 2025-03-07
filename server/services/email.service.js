@@ -31,11 +31,22 @@ const registerEmail = async (userEmail, user) => {
                     button: {
                         color: '#1a73e8',
                         text: 'Валидирай',
-                        link: `${process.env.SITE_DOMAIN}`
+                        link: `${process.env.SITE_DOMAIN}verification?t=${emailToken}`
                     }
-                }
+                },
+                outro: 'Testsistem tm'
             }
         }
+        let emailBody = mailGenerator.generate(email);
+        let message = {
+            from: process.env.EMAIL,
+            to: userEmail,
+            subject: "TEST EMAIL",
+            html: emailBody
+        };
+
+        await transporter.sendMail(message);
+        return true;
     } catch (err) {
         throw err;
     }
