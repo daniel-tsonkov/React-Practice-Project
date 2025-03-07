@@ -20,7 +20,22 @@ const registerEmail = async (userEmail, user) => {
                 name: "Flickbase",
                 link: `${process.env.EMAIL_MAIN_URL}`
             }
-        })
+        });
+
+        const email = {
+            body: {
+                name: userEmail,
+                intro: 'Welcome We\'re here.',
+                action: {
+                    instructions: 'За да валидираш кликни тука',
+                    button: {
+                        color: '#1a73e8',
+                        text: 'Валидирай',
+                        link: `${process.env.SITE_DOMAIN}`
+                    }
+                }
+            }
+        }
     } catch (err) {
         throw err;
     }
