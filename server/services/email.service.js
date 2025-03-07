@@ -11,8 +11,19 @@ let transporter = nodemailer.createTransport({
     }
 })
 
-const registerEmail = async () => {
-
+const registerEmail = async (userEmail, user) => {
+    try {
+        const emailToken = user.generateRegisterToken();
+        let mailGenerator = new Mailgen({
+            theme: "Test Email",
+            product: {
+                name: "Flickbase",
+                link: `${process.env.EMAIL_MAIN_URL}`
+            }
+        })
+    } catch (err) {
+        throw err;
+    }
 }
 
 module.exports = {
