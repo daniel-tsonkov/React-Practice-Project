@@ -44,6 +44,13 @@ const userController = {
         } catch (err) {
             next(err);
         }
+    },
+    async verifyAccount(req, res, next) {
+        try {
+
+        } catch (err) {
+            next(err);
+        }
     }
 };
 
