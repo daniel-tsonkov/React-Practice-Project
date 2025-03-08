@@ -48,6 +48,7 @@ const userController = {
     async verifyAccount(req, res, next) {
         try {
 
+            const token = userService.validateToken(req.query.validation);
         } catch (err) {
             next(err);
         }
