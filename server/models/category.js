@@ -11,7 +11,8 @@ const categories = mongoose.Schema({
         required: [true, 'You need a category name']
     },
     date: {
-
+        type: Date,
+        default: Date.now
     }
 });
 
