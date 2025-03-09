@@ -7,6 +7,6 @@ const auth = require('../middleware/auth');
 
 
 router.route('/catrgories')
-    .post(auth('createAny', 'categories'),)
+    .post(auth('createAny', 'categories'), articlesController.createCategory)
 
 module.exports = router;

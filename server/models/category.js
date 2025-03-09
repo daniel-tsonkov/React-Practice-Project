@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-const categories = mongoose.Schema({
+const categoriesSchema = mongoose.Schema({
     name: {
         type: String,
         unique: true,
