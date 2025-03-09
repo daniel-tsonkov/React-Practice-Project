@@ -8,5 +8,6 @@ const auth = require('../middleware/auth');
 
 router.route('/categories')
     .post(auth('createAny', 'categories'), articlesController.createCategory)
+    .get(auth('readAny', 'categories'), articlesController.getAllCategories)
 
 module.exports = router;

@@ -14,7 +14,15 @@ const addCategory = async (body) => {
     } catch (err) {
         throw err;
     }
-}
+};
+
+const findAllCategories = async () => {
+    try {
+        const categories = await Category.find()
+    } catch (err) {
+        throw err;
+    }
+};
 
 module.exports = {
     addCategory

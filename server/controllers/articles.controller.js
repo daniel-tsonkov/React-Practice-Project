@@ -9,6 +9,14 @@ const articlesController = {
         } catch (err) {
             next(err);
         }
+    },
+    async getAllCategories(req, res, next) {
+        try {
+            const categories = await articlesService.findAllCategories();
+            res.json(category);//?????????
+        } catch (err) {
+            next(err);
+        }
     }
 };
 
