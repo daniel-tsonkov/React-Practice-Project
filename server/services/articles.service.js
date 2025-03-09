@@ -10,6 +10,7 @@ const addCategory = async (body) => {
             ...body
         });
         await category.save();
+        return category;
     } catch (err) {
         throw err;
     }

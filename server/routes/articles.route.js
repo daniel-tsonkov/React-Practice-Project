@@ -6,7 +6,7 @@ const auth = require('../middleware/auth');
 
 
 
-router.route('/catrgories')
+router.route('/categories')
     .post(auth('createAny', 'categories'), articlesController.createCategory)
 
 module.exports = router;
