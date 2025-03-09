@@ -13,7 +13,7 @@ const articlesController = {
     async getAllCategories(req, res, next) {
         try {
             const categories = await articlesService.findAllCategories();
-            res.json(category);//?????????
+            res.json(categories);
         } catch (err) {
             next(err);
         }
