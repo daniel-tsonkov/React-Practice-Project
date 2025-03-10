@@ -13,6 +13,7 @@ let grantsObject = {
         //test: allRights,
         profile: allRights,
         categories: allRights,
+        articles: allRights,
     },
     user: {
         // test: {
