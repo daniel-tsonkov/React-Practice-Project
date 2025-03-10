@@ -38,7 +38,8 @@ const updateArticleById = async (_id, body) => {
             { _id },
             { "$set": body },
             { new: true }
-        );
+        )
+            .populate('category');
         if (!article) {
             throw new ApiError(httpStatus.NOT_FOUND, 'Article not found');
         };
