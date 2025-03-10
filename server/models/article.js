@@ -16,17 +16,17 @@ const articleSchema = mongoose.Schema({
     excerpt: {
         type: String,
         required: [true, 'You need a excerpt'],
-        maxLength: 500
+        maxLength: 500,
     },
     score: {
-        score: Number,
+        type: Number,
         min: 0,
         max: 100,
         required: true
     },
     director: {
         type: String,
-        required: true,
+        required: true
     },
     actors: {
         type: [String],
@@ -53,7 +53,7 @@ const articleSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     }
-});
+})
 
 const Article = mongoose.model('Article', articleSchema);
-module.exports = { Article };
+module.exports = { Article }

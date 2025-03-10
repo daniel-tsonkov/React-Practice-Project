@@ -14,7 +14,7 @@ const categoriesSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     }
-});
+})
 
 const Category = mongoose.model('Category', categoriesSchema);
-module.exports = { Category };
+module.exports = { Category }
