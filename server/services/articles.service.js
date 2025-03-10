@@ -15,8 +15,18 @@ const addArticle = async (body) => {
     } catch (error) {
         throw error;
     }
-}
+};
 
+const getArticleById = async (_id, userdy) => {
+    try {
+        const article = await Article.findById(_id);
+        if (!article) {
+            throw new ApiError(httpStatus.NOT_FOUND, 'Article not found');
+        }
+    } catch (error) {
+        throw error;
+    }
+};
 
 const addCategory = async (body) => {
     try {
@@ -29,7 +39,7 @@ const addCategory = async (body) => {
     } catch (error) {
         throw error;
     }
-}
+};
 
 
 const findAllCategories = async () => {
@@ -39,10 +49,11 @@ const findAllCategories = async () => {
     } catch (error) {
         throw error;
     }
-}
+};
 
 module.exports = {
     addCategory,
     findAllCategories,
-    addArticle
+    addArticle,
+    getArticleById
 }
