@@ -5,7 +5,7 @@ const { addArticleValidator } = require('../middleware/validation');
 
 const auth = require('../middleware/auth');
 
-router.post('/', auth('createAny', 'articles'), articlesController.createArticle)
+router.post('/', auth('createAny', 'articles'), addArticleValidator, articlesController.createArticle)
 
 /// Categories
 router.route('/categories')
