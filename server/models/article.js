@@ -38,9 +38,21 @@ const articleSchema = mongoose.Schema({
             message: "You must add three at least"
         }
     },
-    status: {},
-    category: {},
-    date: {}
+    status: {
+        type: String,
+        required: true,
+        enum: ['draft', 'public'],
+        default: 'draft',
+        index: true
+    },
+    category: {
+        type: String,
+        required: true,
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 const Article = mongoose.model('Article', articleSchema);
