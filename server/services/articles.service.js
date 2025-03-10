@@ -2,6 +2,14 @@ const httpStatus = require('http-status');
 const { Category } = require('../models/category');
 const { ApiError } = require('../middleware/apiError');
 
+const addArticle = async (body) => {
+    try {
+        //create new article
+
+    } catch (err) {
+        throw err;
+    }
+}
 
 const addCategory = async (body) => {
     try {
