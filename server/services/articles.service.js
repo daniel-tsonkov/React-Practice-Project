@@ -17,9 +17,9 @@ const addArticle = async (body) => {
     }
 };
 
-const getArticleById = async (_id, userdy) => {
+const getArticleById = async (_id, user) => {
     try {
-        if (userdy.role === 'user') {
+        if (user.role === 'user') {
             throw new ApiError(httpStatus.BAD_REQUEST, 'You are not allowed');
         };
         const article = await Article.findById(_id).populate('category'); //populate return the info in category
@@ -32,12 +32,13 @@ const getArticleById = async (_id, userdy) => {
     }
 };
 
-const updateArticleById = async (_id, userdy) => {
+const updateArticleById = async (_id, body) => {
     try {
-        if (userdy.role === 'user') {
-            throw new ApiError(httpStatus.BAD_REQUEST, 'You are not allowed');
-        };
-        const article = await Article.findById(_id).populate('category'); //populate return the info in category
+        const article = await Article.findOneAndUpdate(
+            { _id },
+            { "$set": body },
+            { new: true }
+        );
         if (!article) {
             throw new ApiError(httpStatus.NOT_FOUND, 'Article not found');
         };
