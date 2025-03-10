@@ -32,6 +32,21 @@ const getArticleById = async (_id, userdy) => {
     }
 };
 
+const updateArticleById = async (_id, userdy) => {
+    try {
+        if (userdy.role === 'user') {
+            throw new ApiError(httpStatus.BAD_REQUEST, 'You are not allowed');
+        };
+        const article = await Article.findById(_id).populate('category'); //populate return the info in category
+        if (!article) {
+            throw new ApiError(httpStatus.NOT_FOUND, 'Article not found');
+        };
+        return article;
+    } catch (error) {
+        throw error;
+    }
+};
+
 const addCategory = async (body) => {
     try {
         //// validation
@@ -59,5 +74,6 @@ module.exports = {
     addCategory,
     findAllCategories,
     addArticle,
-    getArticleById
+    getArticleById,
+    updateArticleById
 }
