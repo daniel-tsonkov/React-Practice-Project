@@ -49,6 +49,14 @@ const updateArticleById = async (_id, body) => {
     }
 };
 
+const deleteArticleById = async (_id, body) => {
+    try {
+
+    } catch (error) {
+        throw error;
+    }
+};
+
 const addCategory = async (body) => {
     try {
         //// validation
@@ -77,5 +85,6 @@ module.exports = {
     findAllCategories,
     addArticle,
     getArticleById,
-    updateArticleById
+    updateArticleById,
+    deleteArticleById
 }
