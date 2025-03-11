@@ -30,7 +30,7 @@ const getArticleById = async (_id, user) => {
     }
 };
 
-const allArticle = async (_id, user) => {
+const allArticle = async (req) => {
     const sortby = req.query.sortby || "_id";
     const order = req.query.order || "desc";
     const limit = req.query.limit || 3;
