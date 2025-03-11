@@ -15,22 +15,20 @@ const addArticle = async (body) => {
     } catch (error) {
         throw error;
     }
-};
+}
 
 const getArticleById = async (_id, user) => {
     try {
         if (user.role === 'user') {
-            throw new ApiError(httpStatus.BAD_REQUEST, 'You are not allowed');
-        };
-        const article = await Article.findById(_id).populate('category'); //populate return the info in category
-        if (!article) {
-            throw new ApiError(httpStatus.NOT_FOUND, 'Article not found');
-        };
+            throw new ApiError(httpStatus.BAD_REQUEST, 'Sorry you are not allowed')
+        }
+        const article = await Article.findById(_id).populate('category');
+        if (!article) throw new ApiError(httpStatus.NOT_FOUND, 'Article not found');
         return article;
     } catch (error) {
         throw error;
     }
-};
+}
 
 const updateArticleById = async (_id, body) => {
     try {
@@ -38,24 +36,23 @@ const updateArticleById = async (_id, body) => {
             { _id },
             { "$set": body },
             { new: true }
-        )
-            .populate('category');
-        if (!article) {
-            throw new ApiError(httpStatus.NOT_FOUND, 'Article not found');
-        };
+        ).populate('category');;
+        if (!article) throw new ApiError(httpStatus.NOT_FOUND, 'Article not found')
         return article;
     } catch (error) {
         throw error;
     }
-};
+}
 
-const deleteArticleById = async (_id, body) => {
+const deleteArticleById = async (_id) => {
     try {
-
+        const article = await Article.findByIdAndDelete(_id);  //use findByIdAndDelete instead findByIdAndRemove
+        if (!article) throw new ApiError(httpStatus.NOT_FOUND, 'Article not found')
+        return article;
     } catch (error) {
         throw error;
     }
-};
+}
 
 const addCategory = async (body) => {
     try {
@@ -68,7 +65,7 @@ const addCategory = async (body) => {
     } catch (error) {
         throw error;
     }
-};
+}
 
 
 const findAllCategories = async () => {
@@ -78,7 +75,7 @@ const findAllCategories = async () => {
     } catch (error) {
         throw error;
     }
-};
+}
 
 module.exports = {
     addCategory,
