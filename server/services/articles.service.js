@@ -15,7 +15,7 @@ const addArticle = async (body) => {
     } catch (error) {
         throw error;
     }
-}
+};
 
 const getArticleById = async (_id, user) => {
     try {
@@ -28,7 +28,26 @@ const getArticleById = async (_id, user) => {
     } catch (error) {
         throw error;
     }
-}
+};
+
+const allArticle = async (_id, user) => {
+    const sortby = req.query.sortby || "_id";
+    const order = req.query.order || "desc";
+    const limit = req.query.limit || 3;
+
+    try {
+        const articles = await Article
+            .find({ status: 'public' })
+            .populate('category')
+            .sort([
+                [sortby, order]
+            ])
+            .limit(parseInt(limit));
+        return articles;
+    } catch (error) {
+        throw error;
+    }
+};
 
 const updateArticleById = async (_id, body) => {
     try {
@@ -42,7 +61,7 @@ const updateArticleById = async (_id, body) => {
     } catch (error) {
         throw error;
     }
-}
+};
 
 const deleteArticleById = async (_id) => {
     try {
@@ -52,7 +71,7 @@ const deleteArticleById = async (_id) => {
     } catch (error) {
         throw error;
     }
-}
+};
 
 const getUsersArticleById = async (_id) => {
     try {
@@ -68,7 +87,7 @@ const getUsersArticleById = async (_id) => {
     } catch (error) {
         throw error;
     }
-}
+};
 
 const addCategory = async (body) => {
     try {
@@ -81,7 +100,7 @@ const addCategory = async (body) => {
     } catch (error) {
         throw error;
     }
-}
+};
 
 
 const findAllCategories = async () => {
@@ -91,7 +110,7 @@ const findAllCategories = async () => {
     } catch (error) {
         throw error;
     }
-}
+};
 
 module.exports = {
     addCategory,
@@ -100,5 +119,6 @@ module.exports = {
     getArticleById,
     updateArticleById,
     deleteArticleById,
-    getUsersArticleById
+    getUsersArticleById,
+    allArticle
 }
