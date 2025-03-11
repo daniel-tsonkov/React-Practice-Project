@@ -13,7 +13,10 @@ router.route('/article/:id')
     .delete(auth('deleteAny', 'articles'), articlesController.deleteArticleById);
 
 router.route('/users/article/:id')
-    .get(articlesController.getUsersArticleById)
+    .get(articlesController.getUsersArticleById);
+
+router.route('/all')
+    .get(articlesController.getUsersAllArticles);
 
 /// Categories
 router.route('/categories')
