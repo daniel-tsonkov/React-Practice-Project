@@ -47,7 +47,7 @@ const updateArticleById = async (_id, body) => {
 const deleteArticleById = async (_id) => {
     try {
         const article = await Article.findByIdAndDelete(_id);  //use findByIdAndDelete instead findByIdAndRemove
-        if (!article) throw new ApiError(httpStatus.NOT_FOUND, 'Article not found')
+        if (!article) throw new ApiError(httpStatus.NOT_FOUND, 'Article not found');
         return article;
     } catch (error) {
         throw error;
@@ -56,8 +56,14 @@ const deleteArticleById = async (_id) => {
 
 const getUsersArticleById = async (_id) => {
     try {
-        const article = await Article.findByIdAndDelete(_id);  //use findByIdAndDelete instead findByIdAndRemove
-        if (!article) throw new ApiError(httpStatus.NOT_FOUND, 'Article not found')
+        const article = await Article.findById(_id)
+            .populate('category');
+        if (!article) {
+            throw new ApiError(httpStatus.NOT_FOUND, 'Article not found');
+        }
+        if (article.status === 'draft') {
+            throw new ApiError(httpStatus.BAD_REQUEST, 'Sorry you are not allowed');
+        }
         return article;
     } catch (error) {
         throw error;
