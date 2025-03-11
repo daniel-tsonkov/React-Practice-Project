@@ -12,7 +12,7 @@ router.route('/article/:id')
     .patch(auth('updateAny', 'articles'), articlesController.updateArticleById)
     .delete(auth('deleteAny', 'articles'), articlesController.deleteArticleById);
 
-router.route('/user/article/:id')
+router.route('/users/article/:id')
     .get(articlesController.getUsersArticleById)
 
 /// Categories
