@@ -19,6 +19,8 @@ router.route('/all')
     .get(articlesController.getUsersAllArticles)
     .post(articlesController.getMoreAllArticles);
 
+router.post('/admin/paginate', auth('readAny', 'articles'), articlesController.adminPaginate)
+
 /// Categories
 router.route('/categories')
     .post(auth('createAny', 'categories'), articlesController.createCategory)
