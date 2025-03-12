@@ -53,6 +53,7 @@ const moreArticle = async (req) => {
     const sortby = req.body.sortby || "_id";
     const order = req.body.order || "desc";
     const limit = req.body.limit || 3;
+    const skip = req.body.skip || 0;
 
     try {
         const articles = await Article
@@ -61,6 +62,7 @@ const moreArticle = async (req) => {
             .sort([
                 [sortby, order]
             ])
+            .skip(skip) //vazhen e reda skip da e predi limit!!!
             .limit(parseInt(limit));
         return articles;
     } catch (error) {
