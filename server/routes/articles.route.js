@@ -16,7 +16,8 @@ router.route('/users/article/:id')
     .get(articlesController.getUsersArticleById);
 
 router.route('/all')
-    .get(articlesController.getUsersAllArticles);
+    .get(articlesController.getUsersAllArticles)
+    .post(articlesController.getMoreAllArticles);
 
 /// Categories
 router.route('/categories')

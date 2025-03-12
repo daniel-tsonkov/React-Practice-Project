@@ -49,6 +49,25 @@ const allArticle = async (req) => {
     }
 };
 
+const moreArticle = async (req) => {
+    const sortby = req.body.sortby || "_id";
+    const order = req.body.order || "desc";
+    const limit = req.body.limit || 3;
+
+    try {
+        const articles = await Article
+            .find({ status: 'public' })
+            .populate('category')
+            .sort([
+                [sortby, order]
+            ])
+            .limit(parseInt(limit));
+        return articles;
+    } catch (error) {
+        throw error;
+    }
+};
+
 const updateArticleById = async (_id, body) => {
     try {
         const article = await Article.findOneAndUpdate(
@@ -120,5 +139,6 @@ module.exports = {
     updateArticleById,
     deleteArticleById,
     getUsersArticleById,
-    allArticle
+    allArticle,
+    moreArticle
 }

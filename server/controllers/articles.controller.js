@@ -55,6 +55,14 @@ const articlesController = {
             next(error)
         }
     },
+    async getMoreAllArticles(req, res, next) {
+        try {
+            const article = await articlesService.moreArticle(req);
+            res.json(article);
+        } catch (error) {
+            next(error)
+        }
+    },
     async createCategory(req, res, next) {
         try {
             const category = await articlesService.addCategory(req.body);
