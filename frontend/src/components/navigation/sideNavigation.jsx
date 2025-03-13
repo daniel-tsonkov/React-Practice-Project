@@ -36,6 +36,53 @@ const SideDrawer = () => {
               </ListItemIcon>
               <ListItemText primary="Home" />
             </ListItemButton>
+
+            <ListItemButton
+              component={RouterLink}
+              to="/contact"
+              onClick={() => setState(false)}
+            >
+              <ListItemIcon>
+                <MailIcon />
+              </ListItemIcon>
+              <ListItemText primary="Contact" />
+            </ListItemButton>
+
+            <ListItemButton
+              component={RouterLink}
+              to="/auth"
+              onClick={() => setState(false)}
+            >
+              <ListItemIcon>
+                <VpnKeyIcon />
+              </ListItemIcon>
+              <ListItemText primary="Sign in" />
+            </ListItemButton>
+
+            <ListItemButton
+              onClick={() => {
+                alert('sign out');
+              }}
+            >
+              <ListItemIcon>
+                <VpnKeyIcon />
+              </ListItemIcon>
+              <ListItemText primary="Sign out" />
+            </ListItemButton>
+            <>
+              <Divider />
+
+              <ListItemButton
+                component={RouterLink}
+                to="/dashboard"
+                onClick={() => setState(false)}
+              >
+                <ListItemIcon>
+                  <DashboardIcon />
+                </ListItemIcon>
+                <ListItemText primary="Dashboard" />
+              </ListItemButton>
+            </>
           </List>
         </Box>
       </Drawer>
