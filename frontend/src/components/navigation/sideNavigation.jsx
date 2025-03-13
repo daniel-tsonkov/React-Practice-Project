@@ -23,11 +23,22 @@ const SideDrawer = () => {
     <>
       <DehazeIcon className="drawer_btn" onClick={() => setState(true)} />
 
-      <Drawer
-        anchor={'right'}
-        open={state}
-        onClose={() => setState(false)}
-      ></Drawer>
+      <Drawer anchor={'right'} open={state} onClose={() => setState(false)}>
+        <Box sx={{ width: 200 }}>
+          <List>
+            <ListItemButton
+              component={RouterLink}
+              to="/"
+              onClick={() => setState(false)}
+            >
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary="Home" />
+            </ListItemButton>
+          </List>
+        </Box>
+      </Drawer>
     </>
   );
 };
