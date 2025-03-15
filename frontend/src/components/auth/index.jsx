@@ -54,7 +54,20 @@ const Auth = () => {
             component="form"
             onSubmit={formik.handleSubmit}
           >
-            form
+            <TextField
+              name="email"
+              label="Enter your email"
+              variant="outlined"
+              {...formik.getFieldProps('email')}
+            />
+
+            <TextField
+              name="password"
+              label="Enter your password"
+              variant="outlined"
+              type="password"
+              {...formik.getFieldProps('password')}
+            />
           </Box>
         )}
       </div>
