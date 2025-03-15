@@ -4,11 +4,17 @@ import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { useSelector, useDispatch } from 'react-redux';
 
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+
+import { Loader } from '../../utils/tools';
+
 const Auth = () => {
   const [register, setRegister] = useState(false);
   let navigate = useNavigate();
   //redux logic
-  const user = useSelector((state) => state.users);
+  const users = useSelector((state) => state.users);
   const notifications = useSelector((state) => state.notifications);
   const dispatch = useDispatch();
 
@@ -22,11 +28,38 @@ const Auth = () => {
       password: Yup.string().required('Enter password'),
     }),
     onSubmit: (values) => {
-      handleSubmit(values);
+      doHandleSubmit(values);
     },
   });
 
-  return <>Auth!!!</>;
+  const doHandleSubmit = (values) => {
+    if (register) {
+      //dispatch register
+    } else {
+      //dispatch login
+    }
+  };
+
+  return (
+    <>
+      <div className="auth_container">
+        <h1>Authenticate</h1>
+        {users.loading ? (
+          <Loader />
+        ) : (
+          <Box
+            sx={{
+              '& .MuiTextField-root': { width: '100%', marginTop: '20px' },
+            }}
+            component="form"
+            onSubmit={formik.handleSubmit}
+          >
+            form
+          </Box>
+        )}
+      </div>
+    </>
+  );
 };
 
 export default Auth;
