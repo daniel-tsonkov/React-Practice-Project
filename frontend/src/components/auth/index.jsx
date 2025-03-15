@@ -7,11 +7,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { Checkbox, FormControlLabel } from '@mui/material';
 
 import { Loader } from '../../utils/tools';
 
 const Auth = () => {
   const [register, setRegister] = useState(false);
+  const [showPassword, setShowPassword] = useState(false); // Държи състоянието на чекбокса
   let navigate = useNavigate();
   //redux logic
   const users = useSelector((state) => state.users);
@@ -65,9 +67,40 @@ const Auth = () => {
               name="password"
               label="Enter your password"
               variant="outlined"
-              type="password"
+              //   type="password"
+              type={showPassword ? 'text' : 'password'} // Променя типа на паролата
               {...formik.getFieldProps('password')}
             />
+            {/* Чекбокс за показване на паролата */}
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={showPassword}
+                  onChange={() => setShowPassword(!showPassword)}
+                />
+              }
+              label="Show password"
+            />
+
+            <div className="mt-2">
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                size="large"
+              >
+                {register ? 'Register' : 'Login'}
+              </Button>
+              <Button
+                className="mt-3"
+                variant="contained"
+                color="secondary"
+                size="small"
+                onClick={() => setRegister(!register)}
+              >
+                Want to {!register ? 'Register' : 'Login'}
+              </Button>
+            </div>
           </Box>
         )}
       </div>
