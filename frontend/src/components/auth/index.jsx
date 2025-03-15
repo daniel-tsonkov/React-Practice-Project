@@ -9,7 +9,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Checkbox, FormControlLabel } from '@mui/material';
 
-import { Loader } from '../../utils/tools';
+import { Loader, errorHelper } from '../../utils/tools';
 
 const Auth = () => {
   const [register, setRegister] = useState(false);
@@ -26,8 +26,10 @@ const Auth = () => {
       password: 'aassdd',
     },
     validationSchema: Yup.object({
-      email: Yup.string().required('Enter email').email('Enter valid email'),
-      password: Yup.string().required('Enter password'),
+      email: Yup.string()
+        .required('Please enter email')
+        .email('Enter valid email'),
+      password: Yup.string().required('Please enter password'),
     }),
     onSubmit: (values) => {
       doHandleSubmit(values);
@@ -61,6 +63,7 @@ const Auth = () => {
               label="Enter your email"
               variant="outlined"
               {...formik.getFieldProps('email')}
+              {...errorHelper(formik, 'email')}
             />
 
             <TextField
@@ -70,6 +73,7 @@ const Auth = () => {
               //   type="password"
               type={showPassword ? 'text' : 'password'} // Променя типа на паролата
               {...formik.getFieldProps('password')}
+              {...errorHelper(formik, 'password')}
             />
             {/* Чекбокс за показване на паролата */}
             <FormControlLabel
@@ -93,7 +97,7 @@ const Auth = () => {
               </Button>
               <Button
                 className="mt-3"
-                variant="contained"
+                variant="outlined"
                 color="secondary"
                 size="small"
                 onClick={() => setRegister(!register)}
