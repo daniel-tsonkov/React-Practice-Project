@@ -17,7 +17,7 @@ import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 
 const SideDrawer = () => {
-  const [state, setState] = useState(false); //false sidebar start close
+  const [state, setState] = useState(false);
 
   return (
     <>
@@ -69,9 +69,9 @@ const SideDrawer = () => {
               </ListItemIcon>
               <ListItemText primary="Sign out" />
             </ListItemButton>
+
             <>
               <Divider />
-
               <ListItemButton
                 component={RouterLink}
                 to="/dashboard"

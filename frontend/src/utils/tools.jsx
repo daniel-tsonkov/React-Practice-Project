@@ -1,4 +1,4 @@
-import { CircularProgress } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export const errorHelper = (formik, values) => ({
   error: formik.errors[values] && formik.touched[values] ? true : false,
@@ -8,8 +8,8 @@ export const errorHelper = (formik, values) => ({
       : null,
 });
 
-export const Loader = () => {
+export const Loader = () => (
   <div className="root_loader">
     <CircularProgress />
-  </div>;
-};
+  </div>
+);

@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import axios from 'axios';
 
 export const registerUser = createAsyncThunk(
@@ -9,11 +10,12 @@ export const registerUser = createAsyncThunk(
                 email: email,
                 password: password
             });
-            //show message
+
+            /// show a message
             return { data: request.data.user, auth: true }
-        } catch (err) {
-            //show message
-            throw err;
+        } catch (error) {
+            /// show a message
+            throw error;
         }
     }
 )

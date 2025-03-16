@@ -2,7 +2,7 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import MainLayout from './hoc/mainLayout';
 import Home from './components/home';
 import Header from './components/navigation/header';
-import Auth from './components/auth';
+import Auth from './components/auth/index';
 
 const Router = () => {
   return (
