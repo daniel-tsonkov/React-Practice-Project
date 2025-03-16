@@ -7,14 +7,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { Checkbox, FormControlLabel } from '@mui/material';
 
 import { Loader, errorHelper } from '../../utils/tools';
 import { registerUser } from '../../store/actions/users';
 
 const Auth = () => {
   const [register, setRegister] = useState(false);
-  const [showPassword, setShowPassword] = useState(false); // Държи състоянието на чекбокса
   let navigate = useNavigate();
   // redux
   const users = useSelector((state) => state.users);
@@ -22,7 +20,7 @@ const Auth = () => {
   const dispatch = useDispatch();
 
   const formik = useFormik({
-    initialValues: { email: 'user5@asd.asd', password: 'aassdd' },
+    initialValues: { email: 'francis@gmail.com', password: 'testing123' },
     validationSchema: Yup.object({
       email: Yup.string()
         .required('Sorry the email is required')
@@ -68,20 +66,9 @@ const Auth = () => {
               name="password"
               label="Enter you password"
               variant="outlined"
-              type={showPassword ? 'text' : 'password'} // Променя типа на паролата
+              type="password"
               {...formik.getFieldProps('password')}
               {...errorHelper(formik, 'password')}
-            />
-
-            {/* Чекбокс за показване на паролата */}
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={showPassword}
-                  onChange={() => setShowPassword(!showPassword)}
-                />
-              }
-              label="Show password"
             />
 
             <div className="mt-2">
