@@ -45,7 +45,7 @@ const Auth = () => {
 
   useEffect(() => {
     if (notifications && notifications.global.success) {
-      navigate('/dashboard');
+      navigate('/dashboard'); //just upload
     }
   }, [notifications]);
 
