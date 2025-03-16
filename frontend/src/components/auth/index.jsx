@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
 import { Checkbox, FormControlLabel } from '@mui/material';
 
 import { Loader, errorHelper } from '../../utils/tools';
-import { registerUser } from '../../store/actions/users';
+import { registerUser, signInUser } from '../../store/actions/users';
 
 const Auth = () => {
   const [register, setRegister] = useState(false);
@@ -39,6 +39,7 @@ const Auth = () => {
       dispatch(registerUser(values));
     } else {
       /// dispatch login
+      dispatch(signInUser(values));
     }
   };
 

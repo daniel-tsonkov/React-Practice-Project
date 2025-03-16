@@ -9,7 +9,7 @@ const authController = {
             const token = await authService.genAuthToken(user);
 
             /// SEND VERIFICATION EMAIL
-            await emailService.registerEmail(email, user);
+            // await emailService.registerEmail(email, user);
 
             res.cookie('x-access-token', token)
                 .status(httpStatus.CREATED).send({
