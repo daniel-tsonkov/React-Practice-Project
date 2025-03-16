@@ -8,7 +8,8 @@ const authController = {
             const user = await authService.createUser(email, password);
             const token = await authService.genAuthToken(user);
 
-            /// SEND VERIFICATION EMAIL
+            /// SEND VERIFICATION EMAIL 
+            //Problem with this!!!!
             // await emailService.registerEmail(email, user);
 
             res.cookie('x-access-token', token)
