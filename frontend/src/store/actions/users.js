@@ -39,3 +39,14 @@ export const signInUser = createAsyncThunk(
         }
     }
 )
+
+export const isAuth = createAsyncThunk(
+    '/users/isAuth',
+    async () => {
+        try {
+            const request = await axios.get('/api/auth/isauth');
+        } catch (error) {
+            throw error;
+        }
+    }
+)
