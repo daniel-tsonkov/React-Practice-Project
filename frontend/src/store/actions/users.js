@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { errorGlobal, successGlobal } from '../reducers/notifications';
 
 import axios from 'axios';
+import { getAuthHeader } from '../../utils/tools';
 
 export const registerUser = createAsyncThunk(
     'users/registerUser',
@@ -44,9 +45,16 @@ export const isAuth = createAsyncThunk(
     '/users/isAuth',
     async () => {
         try {
-            const request = await axios.get('/api/auth/isauth', {});
+            const request = await axios.get('/api/auth/isauth', getAuthHeader());
+            return {
+                data: request.data,
+                auth: true
+            }
         } catch (error) {
-            throw error;
+            return {
+                data: {},
+                auth: false
+            }
         }
     }
 )
