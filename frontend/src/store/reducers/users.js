@@ -36,7 +36,7 @@ export const usersSlice = createSlice({
                 state.auth = action.payload.auth;
             })
             .addCase(registerUser.rejected, (state) => { state.loading = false })
-            // SIGNIN
+            //SIGN IN
             .addCase(signInUser.pending, (state) => { state.loading = true })
             .addCase(signInUser.fulfilled, (state, action) => {
                 state.loading = false;
@@ -44,7 +44,7 @@ export const usersSlice = createSlice({
                 state.auth = action.payload.auth;
             })
             .addCase(signInUser.rejected, (state) => { state.loading = false })
-            //IS AUTH
+            /// IS AUTH
             .addCase(isAuth.pending, (state) => { state.loading = true })
             .addCase(isAuth.fulfilled, (state, action) => {
                 state.loading = false;

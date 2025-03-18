@@ -20,12 +20,12 @@ export const showToast = (type, msg) => {
   switch (type) {
     case 'SUCCESS':
       toast.success(msg, {
-        position: 'top-center',
+        position: toast.POSITION.BOTTOM_RIGHT,
       });
       break;
     case 'ERROR':
       toast.error(msg, {
-        position: 'top-center',
+        position: toast.POSITION.BOTTOM_RIGHT,
       });
       break;
     default:
@@ -37,5 +37,5 @@ export const getTokenCookie = () => cookie.load('x-access-token');
 export const removeTokenCookie = () =>
   cookie.remove('x-access-token', { path: '/' });
 export const getAuthHeader = () => {
-  return { headers: { Authorizations: `Bearer ${getTokenCookie}` } };
+  return { headers: { Authorization: `Bearer ${getTokenCookie()}` } };
 };
