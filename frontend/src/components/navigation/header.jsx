@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { showToast } from '../../utils/tools';
 
 const Header = () => {
+  const users = useSelector((state) => state.users);
   const notifications = useSelector((state) => state.notifications);
   const dispatch = useDispatch();
 
@@ -33,7 +34,7 @@ const Header = () => {
         >
           Flickbase
         </Link>
-        <SideDrawer />
+        <SideDrawer users={users} />
       </nav>
     </>
   );
