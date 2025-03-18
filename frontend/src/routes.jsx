@@ -9,6 +9,9 @@ import Home from './components/home';
 import Header from './components/navigation/header';
 import Auth from './components/auth';
 
+import Dashboard from './components/dashboard/index';
+import DashboardMain from './components/dashboard/main';
+
 const Router = () => {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
@@ -33,6 +36,9 @@ const Router = () => {
           <Header />
           <MainLayout>
             <Routes>
+              <Route path="/dashboard" element={<Dashboard />}>
+                <Route index element={<DashboardMain />} />
+              </Route>
               <Route path="/auth" element={<Auth />} />
               <Route path="/" element={<Home />} />
             </Routes>
