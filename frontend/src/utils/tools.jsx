@@ -10,6 +10,8 @@ export const errorHelper = (formik, values) => ({
       : null,
 });
 
+export default errorHelper;
+
 export const Loader = () => (
   <div className="root_loader">
     <CircularProgress />
@@ -20,12 +22,12 @@ export const showToast = (type, msg) => {
   switch (type) {
     case 'SUCCESS':
       toast.success(msg, {
-        position: toast.POSITION.BOTTOM_RIGHT,
+        position: 'top-center',
       });
       break;
     case 'ERROR':
       toast.error(msg, {
-        position: toast.POSITION.BOTTOM_RIGHT,
+        position: 'top-center',
       });
       break;
     default:

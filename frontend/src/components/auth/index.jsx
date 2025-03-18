@@ -11,6 +11,7 @@ import { Checkbox, FormControlLabel } from '@mui/material';
 
 import { Loader, errorHelper } from '../../utils/tools';
 import { registerUser, signInUser } from '../../store/actions/users';
+import PreventSignIn from '../../hoc/preventSignin';
 
 const Auth = () => {
   const [register, setRegister] = useState(false);
@@ -50,7 +51,7 @@ const Auth = () => {
   }, [notifications]);
 
   return (
-    <>
+    <PreventSignIn users={users}>
       <div className="auth_container">
         <h1>Authenticate</h1>
         {users.loading ? (
@@ -113,7 +114,7 @@ const Auth = () => {
           </Box>
         )}
       </div>
-    </>
+    </PreventSignIn>
   );
 };
 
