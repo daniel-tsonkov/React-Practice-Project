@@ -11,6 +11,7 @@ import Auth from './components/auth';
 
 import Dashboard from './components/dashboard/index';
 import DashboardMain from './components/dashboard/main';
+import AuthGuard from './hoc/authGuard';
 
 const Router = () => {
   const [loading, setLoading] = useState(true);
@@ -36,7 +37,14 @@ const Router = () => {
           <Header />
           <MainLayout>
             <Routes>
-              <Route path="/dashboard" element={<Dashboard />}>
+              <Route
+                path="/dashboard"
+                element={
+                  <AuthGuard>
+                    <Dashboard />
+                  </AuthGuard>
+                }
+              >
                 <Route index element={<DashboardMain />} />
               </Route>
               <Route path="/auth" element={<Auth />} />
