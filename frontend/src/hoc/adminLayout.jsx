@@ -8,7 +8,31 @@ const AdminLayout = (props) => {
   return (
     <>
       <div className="row adminLayout">
-        <nav className="col-md-2 d-none d-md-block sidebar"></nav>
+        <nav className="col-md-2 d-none d-md-block sidebar">
+          <div>
+            <List>
+              <ListItemButton component={RouterLink} to="/dashboard/profile">
+                <ListItemText primary="Profile" />
+              </ListItemButton>
+              {users.data.role === 'admin' ? (
+                <>
+                  <ListItemButton
+                    component={RouterLink}
+                    to="/dashboard/articles"
+                  >
+                    <ListItemText primary="Articles" />
+                  </ListItemButton>
+                  <ListItemButton
+                    component={RouterLink}
+                    to="/dashboard/categories"
+                  >
+                    <ListItemText primary="Categories" />
+                  </ListItemButton>
+                </>
+              ) : null}
+            </List>
+          </div>
+        </nav>
         <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
           {props.children}
         </main>
