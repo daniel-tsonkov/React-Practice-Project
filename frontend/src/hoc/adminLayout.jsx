@@ -5,7 +5,16 @@ import { useSelector } from 'react-redux';
 const AdminLayout = (props) => {
   const users = useSelector((state) => state.users);
 
-  return <></>;
+  return (
+    <>
+      <div className="row adminLayout">
+        <nav className="col-md-2 d-none d-md-block sidebar"></nav>
+        <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+          {props.children}
+        </main>
+      </div>
+    </>
+  );
 };
 
 export default AdminLayout;
