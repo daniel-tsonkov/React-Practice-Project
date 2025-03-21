@@ -3,7 +3,7 @@ import { formValues, validation } from './validationSchema';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { AdminTitle } from '../../../../utils/tools';
+import { AdminTitle, errorHelper } from '../../../../utils/tools';
 
 //MUI
 import TextField from '@mui/material/TextField';
@@ -36,9 +36,18 @@ const AddArticle = () => {
 
   return (
     <>
-      <AdminTitle title="Add articles" />
+      <AdminTitle title="Add article" />
       <form className="mt-3 article_form" onSubmit={formik.handleSubmit}>
-        <div className="form-group"></div>
+        <div className="form-group">
+          <TextField
+            style={{ width: '100%' }}
+            name="title"
+            label="Enter a title"
+            variant="outlined"
+            {...formik.getFieldProps('title')}
+            {...errorHelper(formik, 'title')}
+          />
+        </div>
       </form>
     </>
   );
