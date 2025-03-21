@@ -49,6 +49,7 @@ const Router = () => {
               >
                 <Route index element={<DashboardMain />} />
                 <Route path="articles" element={<AdminArticles />} />
+                <Route path="articles/add" element={<AddArticle />} />
               </Route>
               <Route path="/auth" element={<Auth />} />
               <Route path="/" element={<Home />} />

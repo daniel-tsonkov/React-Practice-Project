@@ -4,7 +4,7 @@ const AddArticle = () => {
   return (
     <>
       <AdminTitle title="Add articles" />
-      Add articles index
+      Add article
     </>
   );
 };
