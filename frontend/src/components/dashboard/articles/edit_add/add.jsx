@@ -1,4 +1,4 @@
-import { AdminTitle } from '../../../utils/tools';
+import { AdminTitle } from '../../../../utils/tools';
 
 const AddArticle = () => {
   return (
