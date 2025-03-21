@@ -1,5 +1,5 @@
 import { useFormik, FieldArray, FormikProvider } from 'formik';
-import { formValues } from './validationSchema';
+import { formValues, validation } from './validationSchema';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -13,7 +13,7 @@ const AddArticle = () => {
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: formValues,
-    validationSchema: '',
+    validationSchema: validation,
     onSubmit: (values) => {
       console.log(values);
     },
