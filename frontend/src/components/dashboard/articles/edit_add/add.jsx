@@ -48,6 +48,23 @@ const AddArticle = () => {
             {...errorHelper(formik, 'title')}
           />
         </div>
+
+        <div className="form-group">WYSIWYG</div>
+
+        <div className="form-group">
+          <TextField
+            style={{ width: '100%' }}
+            name="excerpt"
+            label="Enter a short desc"
+            variant="outlined"
+            {...formik.getFieldProps('excerpt')}
+            {...errorHelper(formik, 'excerpt')}
+            multiline
+            rows={4}
+          />
+        </div>
+
+        <Divider className="mt-3 mb-3" />
       </form>
     </>
   );
