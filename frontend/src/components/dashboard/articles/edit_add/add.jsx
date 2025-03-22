@@ -94,12 +94,21 @@ const AddArticle = () => {
 
         <FormControl fullWidth>
           <InputLabel>Select a status</InputLabel>
-          <Select name="status">
-            lsbel='Select a status'
+          <Select
+            name="status"
+            label="Select a status"
             {...formik.getFieldProps('status')}
             error={formik.errors.status && formik.touched.status ? true : false}
-            <MenuItem />
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value="draft">Draft</MenuItem>
+            <MenuItem value="public">Public</MenuItem>
           </Select>
+          {formik.errors.status && formik.touched.status ? (
+            <FormHelperText></FormHelperText>
+          ) : null}
         </FormControl>
       </form>
     </>
