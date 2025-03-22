@@ -112,6 +112,16 @@ const AddArticle = () => {
 
           <Divider className="mt-3 mb-3" />
 
+          <>categories</>
+
+          <Divider className="mt-3 mb-3" />
+
+          <>loader</>
+
+          <Button variant="contained" color="primary" type="submit">
+            <span>Add article</span>
+          </Button>
+
           {/* <FormControl fullWidth></FormControl> */}
         </FormControl>
       </form>
