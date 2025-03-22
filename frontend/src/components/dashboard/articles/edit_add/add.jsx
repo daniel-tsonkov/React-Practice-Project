@@ -78,6 +78,29 @@ const AddArticle = () => {
         </div>
 
         <div className="form-group">ACTORS</div>
+
+        <div className="form-group">
+          <TextField
+            style={{ width: '100%' }}
+            name="director"
+            label="Enter a director"
+            variant="outlined"
+            {...formik.getFieldProps('director')}
+            {...errorHelper(formik, 'director')}
+          />
+        </div>
+
+        <Divider className="mt-3 mb-3" />
+
+        <FormControl fullWidth>
+          <InputLabel>Select a status</InputLabel>
+          <Select name="status">
+            lsbel='Select a status'
+            {...formik.getFieldProps('status')}
+            error={formik.errors.status && formik.touched.status ? true : false}
+            <MenuItem />
+          </Select>
+        </FormControl>
       </form>
     </>
   );
