@@ -107,8 +107,12 @@ const AddArticle = () => {
             <MenuItem value="public">Public</MenuItem>
           </Select>
           {formik.errors.status && formik.touched.status ? (
-            <FormHelperText></FormHelperText>
+            <FormHelperText error={true}>{formik.errors.status}</FormHelperText>
           ) : null}
+
+          <Divider className="mt-3 mb-3" />
+
+          {/* <FormControl fullWidth></FormControl> */}
         </FormControl>
       </form>
     </>
