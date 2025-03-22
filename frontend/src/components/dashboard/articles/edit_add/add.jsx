@@ -65,6 +65,19 @@ const AddArticle = () => {
         </div>
 
         <Divider className="mt-3 mb-3" />
+
+        <div className="form-group">
+          <TextField
+            style={{ width: '100%' }}
+            name="score"
+            label="Enter a score"
+            variant="outlined"
+            {...formik.getFieldProps('score')}
+            {...errorHelper(formik, 'score')}
+          />
+        </div>
+
+        <div className="form-group">ACTORS</div>
       </form>
     </>
   );
