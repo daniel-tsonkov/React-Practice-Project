@@ -3,7 +3,7 @@ import { formValues, validation } from './validationSchema';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { AdminTitle, errorHelper } from '../../../../utils/tools';
+import { AdminTitle, errorHelper, Loader } from '../../../../utils/tools';
 
 //MUI
 import TextField from '@mui/material/TextField';
@@ -109,21 +109,21 @@ const AddArticle = () => {
           {formik.errors.status && formik.touched.status ? (
             <FormHelperText error={true}>{formik.errors.status}</FormHelperText>
           ) : null}
+        </FormControl>
 
-          <Divider className="mt-3 mb-3" />
+        <Divider className="mt-3 mb-3" />
 
-          <>categories</>
+        <>categories</>
 
-          <Divider className="mt-3 mb-3" />
+        <Divider className="mt-3 mb-3" />
 
-          <>loader</>
-
+        {articles.loading ? (
+          <Loader />
+        ) : (
           <Button variant="contained" color="primary" type="submit">
             <span>Add article</span>
           </Button>
-
-          {/* <FormControl fullWidth></FormControl> */}
-        </FormControl>
+        )}
       </form>
     </>
   );
