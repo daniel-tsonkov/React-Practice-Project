@@ -8,7 +8,20 @@ import StarterKit from '@tiptap/starter-kit';
 import '../../styles/tiptap.scss';
 
 const TipTap = ({ setEditorState, editorContent = '' }) => {
-  return <>editor</>;
+  const editor = useEditor({
+    content: editorContent,
+    extensions: [StarterKit],
+    onUpdate: ({ editor }) => {
+      //console.log(editor.getJSON());
+    },
+  });
+  return (
+    <>
+      <span>
+        <EditorContent editor={editor} />
+      </span>
+    </>
+  );
 };
 
 export default TipTap;
