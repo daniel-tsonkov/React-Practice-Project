@@ -6,6 +6,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { AdminTitle, errorHelper, Loader } from '../../../../utils/tools';
 
+//ACTIONS
+import { getCategories } from '../../../../store/actions/articles';
+
 //MUI
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';

@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 //import { current } from 'page';
+import { getCategories } from '../actions/articles'
 
 export const articlesSlice = createSlice({
     name: 'articles',
@@ -17,6 +18,13 @@ export const articlesSlice = createSlice({
     },
     reducers: {
 
+    },
+    extraReducers: (builder) => {
+        builder
+            //GET CATEGORY
+            .addCase(getCategories.fulfilled, (state, action) => {
+                state.categories = action.payload;
+            })
     }
 });
 
