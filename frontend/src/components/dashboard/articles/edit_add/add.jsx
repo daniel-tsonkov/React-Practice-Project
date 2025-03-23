@@ -96,14 +96,31 @@ const AddArticle = () => {
                         if (actorsValue.current.value !== '') {
                           arrayHelpers.push(actorsValue.current.value);
                         }
+                        actorsValue.current.value = '';
                       }}
                     >
                       <AddIcon />
                     </IconButton>
                   </Paper>
+                  {formik.errors.actors && formik.touched.actors ? (
+                    <FormHelperText error={true}>
+                      {formik.errors.actors}
+                    </FormHelperText>
+                  ) : null}
+                  <div className="chip_container">
+                    {formik.values.actors.map((actor, index) => (
+                      <div key={index}>
+                        <Chip
+                          label={`${actor}`}
+                          color="primary"
+                          onDelete={() => arrayHelpers.remove(index)}
+                        />
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
-            ></FieldArray>
+            />
           </FormikProvider>
         </div>
 
