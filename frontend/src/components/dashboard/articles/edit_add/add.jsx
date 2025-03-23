@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { useFormik, FieldArray, FormikProvider } from 'formik';
 import { formValues, validation } from './validationSchema';
 
@@ -23,6 +24,7 @@ import AddIcon from '@mui/icons-material/Add';
 const AddArticle = () => {
   const articles = useSelector((state) => state.articles);
   const dispatch = useDispatch();
+  const actorsValue = useRef();
   let navigate = useNavigate();
 
   const formik = useFormik({
@@ -85,9 +87,19 @@ const AddArticle = () => {
                 <div>
                   <Paper className="actors_form">
                     <InputBase
+                      inputRef={actorsValue}
                       className="input"
                       placeholder="Add actor name here"
                     />
+                    <IconButton
+                      onClick={() => {
+                        if (actorsValue.current.value !== '') {
+                          arrayHelpers.push(actorsValue.current.value);
+                        }
+                      }}
+                    >
+                      <AddIcon />
+                    </IconButton>
                   </Paper>
                 </div>
               )}
