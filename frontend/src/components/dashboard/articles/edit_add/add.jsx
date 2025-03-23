@@ -159,21 +159,23 @@ const AddArticle = () => {
         <Divider className="mt-3 mb-3" />
 
         <FormControl fullWidth>
-          <InputLabel>Select a status</InputLabel>
+          <InputLabel>Select a category</InputLabel>
           <Select
-            name="status"
-            label="Select a status"
-            {...formik.getFieldProps('status')}
-            error={formik.errors.status && formik.touched.status ? true : false}
+            name="category"
+            label="Select a category"
+            {...formik.getFieldProps('category')}
+            error={
+              formik.errors.category && formik.touched.category ? true : false
+            }
           >
             <MenuItem value="">
               <em>None</em>
             </MenuItem>
-            <MenuItem value="draft">Draft</MenuItem>
-            <MenuItem value="public">Public</MenuItem>
           </Select>
-          {formik.errors.status && formik.touched.status ? (
-            <FormHelperText error={true}>{formik.errors.status}</FormHelperText>
+          {formik.errors.category && formik.touched.category ? (
+            <FormHelperText error={true}>
+              {formik.errors.category}
+            </FormHelperText>
           ) : null}
         </FormControl>
 
