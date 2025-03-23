@@ -158,7 +158,24 @@ const AddArticle = () => {
 
         <Divider className="mt-3 mb-3" />
 
-        <>categories</>
+        <FormControl fullWidth>
+          <InputLabel>Select a status</InputLabel>
+          <Select
+            name="status"
+            label="Select a status"
+            {...formik.getFieldProps('status')}
+            error={formik.errors.status && formik.touched.status ? true : false}
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value="draft">Draft</MenuItem>
+            <MenuItem value="public">Public</MenuItem>
+          </Select>
+          {formik.errors.status && formik.touched.status ? (
+            <FormHelperText error={true}>{formik.errors.status}</FormHelperText>
+          ) : null}
+        </FormControl>
 
         <Divider className="mt-3 mb-3" />
 
