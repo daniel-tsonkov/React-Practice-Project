@@ -182,8 +182,8 @@ const AddArticle = () => {
             </MenuItem>
             {articles.categories
               ? articles.categories.map((item) => (
-                  <MenuItem value={item._id}>
-                    <em>None</em>
+                  <MenuItem key={item._id} value={item._id}>
+                    {item.name}
                   </MenuItem>
                 ))
               : null}
