@@ -77,7 +77,23 @@ const AddArticle = () => {
           />
         </div>
 
-        <div className="form-group">ACTORS</div>
+        <div className="form-group">
+          <FormikProvider value={formik}>
+            <FieldArray
+              name="actors"
+              render={(arrayHelpers) => (
+                <div>
+                  <Paper className="actors_form">
+                    <InputBase
+                      className="input"
+                      placeholder="Add actor name here"
+                    />
+                  </Paper>
+                </div>
+              )}
+            ></FieldArray>
+          </FormikProvider>
+        </div>
 
         <div className="form-group">
           <TextField
