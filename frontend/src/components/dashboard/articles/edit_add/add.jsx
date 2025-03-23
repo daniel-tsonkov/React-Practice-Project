@@ -1,13 +1,15 @@
-import { useRef } from 'react';
-import { useFormik, FieldArray, FormikProvider } from 'formik';
-import { formValues, validation } from './validationSchema';
+import { useEffect, useRef } from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { AdminTitle, errorHelper, Loader } from '../../../../utils/tools';
 
-//ACTIONS
+//FORMIK
+import { useFormik, FieldArray, FormikProvider } from 'formik';
+import { formValues, validation } from './validationSchema';
+
+//ACTIONS (REDUX)
 import { getCategories } from '../../../../store/actions/articles';
+import { useSelector, useDispatch } from 'react-redux';
 
 //MUI
 import TextField from '@mui/material/TextField';
@@ -38,6 +40,10 @@ const AddArticle = () => {
       console.log(values);
     },
   });
+
+  useEffect(() => {
+    dispatch(getCategories());
+  }, []);
 
   return (
     <>
@@ -174,6 +180,13 @@ const AddArticle = () => {
             <MenuItem value="">
               <em>None</em>
             </MenuItem>
+            {articles.categories
+              ? articles.categories.map((item) => (
+                  <MenuItem value={item._id}>
+                    <em>None</em>
+                  </MenuItem>
+                ))
+              : null}
           </Select>
           {formik.errors.category && formik.touched.category ? (
             <FormHelperText error={true}>
