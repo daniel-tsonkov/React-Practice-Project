@@ -4,7 +4,19 @@ import { getAuthHeader } from '../../utils/tools'
 
 import axios from 'axios';
 
-
+export const addArticle = createAsyncThunk(
+    'articles/addArticle',
+    async (article, { dispatch }) => {
+        try {
+            const request = await axios.post(`/api/articles`, article, getAuthHeader());
+            dispatch(successGlobal('Post created!!!'));
+            return request.data;
+        } catch (err) {
+            dispatch(errorGlobal(err.response.data.message));
+            throw err;
+        }
+    }
+);
 
 export const getCategories = createAsyncThunk(
     'articles/getCategories',

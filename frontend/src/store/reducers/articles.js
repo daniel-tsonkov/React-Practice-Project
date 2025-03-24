@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 //import { current } from 'page';
-import { getCategories } from '../actions/articles'
+import { getCategories, addArticle } from '../actions/articles'
 
 export const articlesSlice = createSlice({
     name: 'articles',
@@ -21,6 +21,10 @@ export const articlesSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
+            //ADD ARTICLE
+            .addCase(addArticle.fulfilled, (state, action) => { })
+            .addCase(addArticle.fulfilled, (state, action) => { })
+            .addCase(addArticle.fulfilled, (state, action) => { })
             //GET CATEGORY
             .addCase(getCategories.fulfilled, (state, action) => {
                 state.categories = action.payload;
