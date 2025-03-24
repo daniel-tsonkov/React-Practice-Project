@@ -39,7 +39,11 @@ const AddArticle = () => {
     initialValues: formValues,
     validationSchema: validation,
     onSubmit: (values) => {
-      dispatch(addArticle(values));
+      dispatch(addArticle(values))
+        .unwrap()
+        .then(() => {
+          navigate('/dashboard/articles');
+        });
     },
   });
 
