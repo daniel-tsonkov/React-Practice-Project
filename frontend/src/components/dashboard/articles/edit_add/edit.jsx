@@ -28,7 +28,7 @@ import FormHelperText from '@mui/material/FormHelperText';
 import InputLabel from '@mui/material/InputLabel';
 import AddIcon from '@mui/icons-material/Add';
 
-const AddArticle = () => {
+const EditArticle = () => {
   const articles = useSelector((state) => state.articles);
   const dispatch = useDispatch();
   const actorsValue = useRef();
@@ -221,4 +221,4 @@ const AddArticle = () => {
   );
 };
 
-export default AddArticle;
+export default EditArticle;
