@@ -57,7 +57,7 @@ const EditArticle = () => {
 
   return (
     <>
-      <AdminTitle title="Add article" />
+      <AdminTitle title="Edit article" />
       <form className="mt-3 article_form" onSubmit={formik.handleSubmit}>
         <div className="form-group">
           <TextField
@@ -213,7 +213,7 @@ const EditArticle = () => {
           <Loader />
         ) : (
           <Button variant="contained" color="primary" type="submit">
-            <span>Add article</span>
+            <span>Edit article</span>
           </Button>
         )}
       </form>
