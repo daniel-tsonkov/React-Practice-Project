@@ -22,16 +22,12 @@ export const articlesSlice = createSlice({
     extraReducers: (builder) => {
         builder
             //ADD ARTICLE
-            .addCase(addArticle.pending, (state) => {
-                state.loading = true;
-            })
+            .addCase(addArticle.pending, (state) => { state.loading = true; })
             .addCase(addArticle.fulfilled, (state, action) => {
                 state.loading = false;
-                state.lastAdded = action.payload;
+                state.lastAdded = action.payload
             })
-            .addCase(addArticle.rejected, (state, action) => {
-                state.loading = false;
-            })
+            .addCase(addArticle.rejected, (state, action) => { state.loading = false; })
             //GET CATEGORY
             .addCase(getCategories.fulfilled, (state, action) => {
                 state.categories = action.payload;

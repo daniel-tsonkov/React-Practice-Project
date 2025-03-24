@@ -3,16 +3,16 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { isAuth } from './store/actions/users';
 import { Loader } from './utils/tools';
+import AuthGuard from './hoc/authGuard';
 
 import MainLayout from './hoc/mainLayout';
 import Home from './components/home';
 import Header from './components/navigation/header';
 import Auth from './components/auth';
 
-import Dashboard from './components/dashboard/index';
+import Dashboard from './components/dashboard';
 import DashboardMain from './components/dashboard/main';
-import AuthGuard from './hoc/authGuard';
-import AdminArticles from './components/dashboard/articles/index';
+import AdminArticles from './components/dashboard/articles';
 import AddArticle from './components/dashboard/articles/edit_add/add';
 import EditArticle from './components/dashboard/articles/edit_add/edit';
 

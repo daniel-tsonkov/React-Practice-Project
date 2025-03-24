@@ -1,6 +1,5 @@
-import { useEffect, useRef } from 'react';
-
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { AdminTitle, errorHelper, Loader } from '../../../../utils/tools';
 
 //FORMIK
@@ -9,8 +8,11 @@ import { formValues, validation } from './validationSchema';
 
 import WYSIWYG from '../../../../utils/form/tiptap';
 
-//ACTIONS (REDUX)
-import { getCategories, addArticle } from '../../../../store/actions/articles';
+// redux
+import {
+  getCategories,
+  getAdminArticle,
+} from '../../../../store/actions/articles';
 import { useSelector, useDispatch } from 'react-redux';
 
 //MUI
@@ -32,18 +34,21 @@ const EditArticle = () => {
   const articles = useSelector((state) => state.articles);
   const dispatch = useDispatch();
   const actorsValue = useRef();
+
+  const [formData, setFormdata] = useState(formValues);
   let navigate = useNavigate();
+  let { articleId } = useParams();
 
   const formik = useFormik({
     enableReinitialize: true,
-    initialValues: formValues,
+    initialValues: formData,
     validationSchema: validation,
     onSubmit: (values) => {
-      dispatch(addArticle(values))
-        .unwrap()
-        .then(() => {
-          navigate('/dashboard/articles');
-        });
+      //    dispatch(addArticle(values))
+      //    .unwrap()
+      //    .then(()=>{
+      //         navigate('/dashboard/articles')
+      //    })
     },
   });
 
@@ -52,8 +57,17 @@ const EditArticle = () => {
   };
 
   useEffect(() => {
-    dispatch(getCategories());
-  }, []);
+    dispatch(getCategories({}));
+    dispatch(getAdminArticle(articleId))
+      .unwrap()
+      .then((response) => {
+        if (response.category) {
+          response.category = response.category._id;
+        }
+
+        setFormdata(response);
+      });
+  }, [dispatch]);
 
   return (
     <>
@@ -128,6 +142,7 @@ const EditArticle = () => {
                       {formik.errors.actors}
                     </FormHelperText>
                   ) : null}
+
                   <div className="chip_container">
                     {formik.values.actors.map((actor, index) => (
                       <div key={index}>

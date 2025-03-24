@@ -7,17 +7,28 @@ import {
 import StarterKit from '@tiptap/starter-kit';
 import '../../styles/tiptap.scss';
 
-//import { generateHTML } from '@tiptap/html';
+// import { generateHTML } from '@tiptap/html'
 
-const TipTap = ({ setEditorState, editorContent = '' }) => {
+const Tiptap = ({ setEditorState, editorContent = '' }) => {
+  // const output = useMemo(() => {
+  //     return generateHTML(json, [
+  //       Document,
+  //       Paragraph,
+  //       Text,
+  //       Bold,
+  //       // other extensions …
+  //     ])
+  //   }, [json])
+
   const editor = useEditor({
     content: editorContent,
     extensions: [StarterKit],
     onUpdate: ({ editor }) => {
-      //console.log(editor.getJSON());
+      // console.log(editor.getHTML())
       setEditorState(editor.getHTML());
     },
   });
+
   return (
     <>
       <div>
@@ -83,6 +94,7 @@ const TipTap = ({ setEditorState, editorContent = '' }) => {
           </FloatingMenu>
         )}
       </div>
+
       <span>
         <EditorContent editor={editor} />
       </span>
@@ -90,4 +102,4 @@ const TipTap = ({ setEditorState, editorContent = '' }) => {
   );
 };
 
-export default TipTap;
+export default Tiptap;
