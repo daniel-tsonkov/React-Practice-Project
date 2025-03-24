@@ -7,6 +7,8 @@ import {
 import StarterKit from '@tiptap/starter-kit';
 import '../../styles/tiptap.scss';
 
+//import { generateHTML } from '@tiptap/html';
+
 const TipTap = ({ setEditorState, editorContent = '' }) => {
   const editor = useEditor({
     content: editorContent,
