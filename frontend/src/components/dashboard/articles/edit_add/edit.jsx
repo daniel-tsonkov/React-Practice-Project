@@ -66,6 +66,12 @@ const EditArticle = () => {
         }
 
         setFormdata(response);
+        // Гарантираме, че actors винаги е масив
+        // setFormdata({
+        //   ...formValues, // Връща всички първоначални стойности
+        //   ...response, // Презаписва със стойностите от бекенда
+        //   actors: response.actors || [], // Гарантира, че actors е поне празен масив
+        // });
       });
   }, [dispatch]);
 
@@ -145,6 +151,7 @@ const EditArticle = () => {
 
                   <div className="chip_container">
                     {formik.values.actors.map((actor, index) => (
+                      // {(formik.values.actors || []).map((actor, index) => (
                       <div key={index}>
                         <Chip
                           label={`${actor}`}
