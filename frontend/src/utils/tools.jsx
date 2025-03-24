@@ -10,8 +10,6 @@ export const errorHelper = (formik, values) => ({
       : null,
 });
 
-export default errorHelper;
-
 export const Loader = () => (
   <div className="root_loader">
     <CircularProgress />

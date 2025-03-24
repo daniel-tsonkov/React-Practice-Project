@@ -1,14 +1,13 @@
-import { AdminTitle } from '../../utils/tools';
+import { AdminTitle } from '../../utils/tools'
+
 
 const DashboardMain = () => {
-  return (
-    <>
-      <AdminTitle title="Dashboard" />
-      Dashboard main
-    </>
-  );
-};
-//first fake commit
-//2 fake
+    return(
+        <>
+            <AdminTitle title="Dashboard"/>
+            Dashboard main
+        </>
+    )
+}
 
-export default DashboardMain;
+export default DashboardMain
