@@ -6,6 +6,7 @@ import {
 } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import '../../styles/tiptap.scss';
+import { useEffect } from 'react';
 
 // import { generateHTML } from '@tiptap/html'
 
@@ -29,6 +30,8 @@ const Tiptap = ({ setEditorState, editorContent = '' }) => {
       setEditorState(editor.getHTML());
     },
   });
+
+  // useEffect(() => {}, [editor]);
 
   return (
     <>
