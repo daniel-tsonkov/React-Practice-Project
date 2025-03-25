@@ -27,7 +27,15 @@ const AdminArticles = () => {
   return (
     <>
       <AdminTitle title="Articles" />
-      admin articles index
+      <div className="articles_table">
+        <ButtonToolbar className="mb-3">
+          <ButtonGroup></ButtonGroup>
+          <form>
+            <InputGroup.Text id="btngr1">@</InputGroup.Text>
+            <FormControl />
+          </form>
+        </ButtonToolbar>
+      </div>
     </>
   );
 };
