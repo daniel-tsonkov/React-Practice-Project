@@ -12,6 +12,7 @@ import WYSIWYG from '../../../../utils/form/tiptap';
 import {
   getCategories,
   getAdminArticle,
+  updateArticle,
 } from '../../../../store/actions/articles';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -46,11 +47,7 @@ const EditArticle = () => {
     initialValues: formData,
     validationSchema: validation,
     onSubmit: (values) => {
-      //    dispatch(addArticle(values))
-      //    .unwrap()
-      //    .then(()=>{
-      //         navigate('/dashboard/articles')
-      //    })
+      dispatch(updateArticle({ values, articleId }));
     },
   });
 
