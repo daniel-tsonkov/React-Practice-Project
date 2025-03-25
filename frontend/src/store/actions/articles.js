@@ -9,10 +9,10 @@ export const addArticle = createAsyncThunk(
     async (article, { dispatch }) => {
         try {
             const request = await axios.post(`/api/articles`, article, getAuthHeader());
-            dispatch(successGlobal('Post created!!!'))
+            dispatch(successGlobal('Post created!!!'));
             return request.data;
         } catch (error) {
-            dispatch(errorGlobal(error.response.data.message))
+            dispatch(errorGlobal(error.response.data.message));
             throw error;
         }
     }
@@ -22,11 +22,11 @@ export const updateArticle = createAsyncThunk(
     'articles/updateArticle',
     async ({ values, articleId }, { dispatch }) => {
         try {
-            await axios.patch(`/api/articles/article/${articleId}`, values, getAuthHeader())
-            dispatch(successGlobal('Article updated !!'))
-            return true
+            await axios.patch(`/api/articles/article/${articleId}`, values, getAuthHeader());
+            dispatch(successGlobal('Article updated !!'));
+            return true;
         } catch (error) {
-            dispatch(errorGlobal(error.response.data.message))
+            dispatch(errorGlobal(error.response.data.message));
             throw error;
         }
     }
@@ -39,7 +39,7 @@ export const getAdminArticle = createAsyncThunk(
             const request = await axios.get(`/api/articles/article/${_id}`, getAuthHeader());
             return request.data;
         } catch (error) {
-            dispatch(errorGlobal(error.response.data.message))
+            dispatch(errorGlobal(error.response.data.message));
             throw error;
         }
     }
@@ -47,11 +47,11 @@ export const getAdminArticle = createAsyncThunk(
 
 export const getPaginateArticles = createAsyncThunk(
     'articles/getPaginateArticles',
-    async (_id, { dispatch }) => {
+    async ({ page = 1, limit = 4, keywords = "" }, { dispatch }) => {
         try {
-
+            const request = await axios.post(`/api/articles/admin/paginate`, { page, limit, keywords });
         } catch (error) {
-            dispatch(errorGlobal(error.response.data.message))
+            dispatch(errorGlobal(error.response.data.message));
             throw error;
         }
     }
@@ -64,7 +64,7 @@ export const getCategories = createAsyncThunk(
             const request = await axios.get(`/api/articles/categories`, getAuthHeader());
             return request.data;
         } catch (error) {
-            dispatch(errorGlobal(error.response.data.message))
+            dispatch(errorGlobal(error.response.data.message));
             throw error;
         }
     }
