@@ -45,8 +45,17 @@ export const getAdminArticle = createAsyncThunk(
     }
 )
 
+export const getPaginateArticles = createAsyncThunk(
+    'articles/getPaginateArticles',
+    async (_id, { dispatch }) => {
+        try {
 
-
+        } catch (error) {
+            dispatch(errorGlobal(error.response.data.message))
+            throw error;
+        }
+    }
+)
 
 export const getCategories = createAsyncThunk(
     'articles/getCategories',
