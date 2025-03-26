@@ -1,7 +1,12 @@
 import { Table, Pagination } from 'react-bootstrap';
 import { Loader } from '../../../utils/tools';
 
-const PaginateComponent = ({ articles, goToEdit }) => {
+const PaginateComponent = ({
+  articles,
+  goToEdit,
+  goToPrevPage,
+  goToNextPage,
+}) => {
   return (
     <>
       {articles && articles.docs ? (
