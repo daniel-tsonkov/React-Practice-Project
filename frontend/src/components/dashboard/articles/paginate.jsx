@@ -50,15 +50,27 @@ const PaginateComponent = ({
           <Pagination>
             {articles.hasPrevPage ? (
               <>
-                <Pagination.Prev />
-                <Pagination.Item>{articles.prevPage}</Pagination.Item>
+                <Pagination.Prev
+                  onClick={() => goToPrevPage(articles.prevPage)}
+                />
+                <Pagination.Item
+                  onClick={() => goToPrevPage(articles.prevPage)}
+                >
+                  {articles.prevPage}
+                </Pagination.Item>
               </>
             ) : null}
             <Pagination.Item active>{articles.page}</Pagination.Item>
             {articles.hasNextPage ? (
               <>
-                <Pagination.Item>{articles.nextPage}</Pagination.Item>
-                <Pagination.Next />
+                <Pagination.Item
+                  onClick={() => goToPrevPage(articles.nextPage)}
+                >
+                  {articles.nextPage}
+                </Pagination.Item>
+                <Pagination.Next
+                  onClick={() => goToPrevPage(articles.nextPage)}
+                />
               </>
             ) : null}
           </Pagination>
