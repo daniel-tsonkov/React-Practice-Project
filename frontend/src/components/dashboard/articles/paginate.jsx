@@ -1,8 +1,53 @@
 import { Table, Pagination } from 'react-bootstrap';
 import { Loader } from '../../../utils/tools';
 
-const PaginateComponent = ({}) => {
-  return <>Paginate</>;
+const PaginateComponent = ({ articles }) => {
+  return (
+    <>
+      {articles && articles.docs ? (
+        <>
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>Created</th>
+                <th>Title</th>
+                <th>Score</th>
+              </tr>
+              <tbody>
+                {articles.docs.map((item) => (
+                  <tr key={item._id}>
+                    <td>{item.date}</td>
+                    <td>{item.title}</td>
+                    <td>{item.score}</td>
+                    <td
+                      className="action_btn remove_btn"
+                      onClick={() => alert('remove')}
+                    >
+                      Remove
+                    </td>
+                    <td
+                      className="action_btn edit_btn"
+                      onClick={() => alert('edit')}
+                    >
+                      Edit
+                    </td>
+                    <td
+                      className="action_btn status_btn"
+                      onClick={() => alert('change status')}
+                    >
+                      {item.status}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </thead>
+          </Table>
+        </>
+      ) : (
+        <Loader />
+      )}
+    </>
+  );
 };
 
 export default PaginateComponent;
