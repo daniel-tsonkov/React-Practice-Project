@@ -35,6 +35,10 @@ const AdminArticles = () => {
     navigate(`/dashboard/articles/edit/${id}`);
   };
 
+  const handleStatusChange = (status, _id) => {
+    let newStatus = status === 'draft' ? 'public' : 'draft';
+  };
+
   ///////////
 
   useEffect(() => {
