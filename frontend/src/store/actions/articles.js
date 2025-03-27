@@ -74,6 +74,8 @@ export const changeStatusArticle = createAsyncThunk(
             }, getAuthHeader())
 
             let article = request.data;
+
+            //prev state 6:45
         } catch (error) {
             dispatch(errorGlobal(error.response.data.message))
             throw error;
