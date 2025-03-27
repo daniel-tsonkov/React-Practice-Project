@@ -72,6 +72,8 @@ export const changeStatusArticle = createAsyncThunk(
             const request = await axios.patch(`/api/articles/article/${_id}`, {
                 status: newStatus
             }, getAuthHeader())
+
+            let article = request.data;
         } catch (error) {
             dispatch(errorGlobal(error.response.data.message))
             throw error;
