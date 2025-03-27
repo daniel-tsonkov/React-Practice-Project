@@ -37,6 +37,7 @@ const AdminArticles = () => {
 
   const handleStatusChange = (status, _id) => {
     let newStatus = status === 'draft' ? 'public' : 'draft';
+    //dispatch
   };
 
   ///////////
@@ -69,6 +70,7 @@ const AdminArticles = () => {
             goToEdit={(id) => goToEdit(id)}
             goToPrevPage={(page) => goToPrevPage(page)}
             goToNextPage={(page) => goToPrevPage(page)}
+            handleStatusChange={(status, id) => handleStatusChange(status, id)}
           />
         </>
       </div>
