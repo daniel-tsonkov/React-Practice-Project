@@ -78,6 +78,12 @@ export const changeStatusArticle = createAsyncThunk(
             let state = getState().articles.adminArticles.docs;
             //find position
             let position = state.findIndex(acticle => article._id === _id);
+            //We cannot mutate 'let state'
+            const newState = [...state];
+            newState[position] = article;
+            dispatch(successGlobal('Status changed!!!'));
+
+            return newState;
         } catch (error) {
             dispatch(errorGlobal(error.response.data.message))
             throw error;
