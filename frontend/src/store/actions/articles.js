@@ -76,6 +76,7 @@ export const changeStatusArticle = createAsyncThunk(
             let article = request.data;
 
             //prev state 6:45
+            let state = getState().articles.adminArticles
         } catch (error) {
             dispatch(errorGlobal(error.response.data.message))
             throw error;
