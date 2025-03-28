@@ -74,9 +74,10 @@ export const changeStatusArticle = createAsyncThunk(
             }, getAuthHeader())
 
             let article = request.data;
-
             //prev state 6:45
-            let state = getState().articles.adminArticles
+            let state = getState().articles.adminArticles.docs;
+            //find position
+            let position = state.findIndex(acticle => article._id === _id);
         } catch (error) {
             dispatch(errorGlobal(error.response.data.message))
             throw error;
