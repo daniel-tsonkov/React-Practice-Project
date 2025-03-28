@@ -4,7 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { AdminTitle } from '../../../utils/tools';
 
 import PaginateComponent from './paginate';
-import { getPaginateArticles } from '../../../store/actions/articles';
+import {
+  getPaginateArticles,
+  changeStatusArticle,
+} from '../../../store/actions/articles';
 
 import {
   Modal,
@@ -37,7 +40,7 @@ const AdminArticles = () => {
 
   const handleStatusChange = (status, _id) => {
     let newStatus = status === 'draft' ? 'public' : 'draft';
-    //dispatch
+    dispatch(changeStatusArticle({ newStatus, _id }));
   };
 
   ///////////
