@@ -52,6 +52,10 @@ const AdminArticles = () => {
     dispatch(changeStatusArticle({ newStatus, _id }));
   };
 
+  const handleDelete = () => {
+    alert(toRemove);
+  };
+
   ///////////
 
   useEffect(() => {
@@ -83,8 +87,24 @@ const AdminArticles = () => {
             goToPrevPage={(page) => goToPrevPage(page)}
             goToNextPage={(page) => goToPrevPage(page)}
             handleStatusChange={(status, id) => handleStatusChange(status, id)}
+            handleShow={() => handleShow()}
           />
         </>
+
+        <Modal show={removeAlert} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Are you really sure?</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>There is no goinf back.</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Ops close this
+            </Button>
+            <Button variant="danger" onClick={() => handleDelete()}>
+              Delete
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     </>
   );
