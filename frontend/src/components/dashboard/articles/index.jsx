@@ -53,7 +53,8 @@ const AdminArticles = () => {
   };
 
   const handleDelete = () => {
-    alert(toRemove);
+    //alert(toRemove);
+    //dispatch
   };
 
   ///////////
@@ -87,7 +88,7 @@ const AdminArticles = () => {
             goToPrevPage={(page) => goToPrevPage(page)}
             goToNextPage={(page) => goToPrevPage(page)}
             handleStatusChange={(status, id) => handleStatusChange(status, id)}
-            handleShow={() => handleShow()}
+            handleShow={(id) => handleShow(id)}
           />
         </>
 
