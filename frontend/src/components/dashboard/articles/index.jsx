@@ -25,7 +25,13 @@ const AdminArticles = () => {
   const navigate = useNavigate();
 
   const [removeAlert, setRemoveAlert] = useState(false);
-  const [toRemove, setRemove] = useState(null);
+  const [toRemove, setRemove] = useState(null); //1.45
+
+  const handleClose = () => setRemoveAlert(false);
+  const handleShow = (id = null) => {
+    setRemove(id);
+    setRemoveAlert(true);
+  };
 
   //// PAGINATE FUNC
 
