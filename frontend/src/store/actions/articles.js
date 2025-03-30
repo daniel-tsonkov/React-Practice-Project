@@ -71,18 +71,18 @@ export const changeStatusArticle = createAsyncThunk(
         try {
             const request = await axios.patch(`/api/articles/article/${_id}`, {
                 status: newStatus
-            }, getAuthHeader())
+            }, getAuthHeader());
 
             let article = request.data;
-            //prev state 6:45
+            /// previous state
             let state = getState().articles.adminArticles.docs;
-            //find position
-            let position = state.findIndex(acticle => article._id === _id);
-            //We cannot mutate 'let state'
+            /// find the position
+            let position = state.findIndex(article => article._id === _id);
+            /// We CANNOT mutate 'let state'.
             const newState = [...state];
             newState[position] = article;
-            dispatch(successGlobal('Status changed!!!'));
 
+            dispatch(successGlobal('Status changed !!'));
             return newState;
         } catch (error) {
             dispatch(errorGlobal(error.response.data.message))
@@ -91,16 +91,16 @@ export const changeStatusArticle = createAsyncThunk(
     }
 )
 
+
 export const removeArticle = createAsyncThunk(
     'articles/removeArticle',
     async (_id, { dispatch, getState }) => {
         try {
             await axios.delete(`/api/articles/article/${_id}`, getAuthHeader());
-            dispatch(successGlobal('Article removed'));
+            dispatch(successGlobal('Article Removed'));
 
-            let state = getState().articles.adminArticles.page;
+            let page = getState().articles.adminArticles.page;
             dispatch(getPaginateArticles({ page }));
-
             return true;
         } catch (error) {
             dispatch(errorGlobal(error.response.data.message))
@@ -108,6 +108,7 @@ export const removeArticle = createAsyncThunk(
         }
     }
 )
+
 
 export const getCategories = createAsyncThunk(
     'articles/getCategories',

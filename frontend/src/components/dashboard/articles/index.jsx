@@ -26,7 +26,7 @@ const AdminArticles = () => {
   const navigate = useNavigate();
 
   const [removeAlert, setRemoveAlert] = useState(false);
-  const [toRemove, setRemove] = useState(null); //1.45
+  const [toRemove, setRemove] = useState(null);
 
   const handleClose = () => setRemoveAlert(false);
   const handleShow = (id = null) => {
@@ -56,7 +56,10 @@ const AdminArticles = () => {
   const handleDelete = () => {
     dispatch(removeArticle(toRemove))
       .unwrap()
-      .finally(() => {});
+      .finally(() => {
+        setRemoveAlert(false);
+        setRemove(null);
+      });
   };
 
   ///////////
@@ -88,7 +91,7 @@ const AdminArticles = () => {
             articles={articles.adminArticles}
             goToEdit={(id) => goToEdit(id)}
             goToPrevPage={(page) => goToPrevPage(page)}
-            goToNextPage={(page) => goToPrevPage(page)}
+            goToNextPage={(page) => goToNextPage(page)}
             handleStatusChange={(status, id) => handleStatusChange(status, id)}
             handleShow={(id) => handleShow(id)}
           />
@@ -96,12 +99,12 @@ const AdminArticles = () => {
 
         <Modal show={removeAlert} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Are you really sure?</Modal.Title>
+            <Modal.Title>Are you really sure ?</Modal.Title>
           </Modal.Header>
-          <Modal.Body>There is no goinf back.</Modal.Body>
+          <Modal.Body>There is no going back.</Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
-              Ops close this
+              Oop, close this.
             </Button>
             <Button variant="danger" onClick={() => handleDelete()}>
               Delete
