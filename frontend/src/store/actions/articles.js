@@ -91,7 +91,17 @@ export const changeStatusArticle = createAsyncThunk(
     }
 )
 
+export const removeArticle = createAsyncThunk(
+    'articles/removeArticle',
+    async (obj, { dispatch }) => {
+        try {
 
+        } catch (error) {
+            dispatch(errorGlobal(error.response.data.message))
+            throw error;
+        }
+    }
+)
 
 export const getCategories = createAsyncThunk(
     'articles/getCategories',
