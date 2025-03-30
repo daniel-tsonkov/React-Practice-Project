@@ -99,7 +99,9 @@ export const removeArticle = createAsyncThunk(
             dispatch(successGlobal('Article removed'));
 
             let state = getState().articles.adminArticles.page;
-            dispatch(getPaginateArticles({ page }))
+            dispatch(getPaginateArticles({ page }));
+
+            return true;
         } catch (error) {
             dispatch(errorGlobal(error.response.data.message))
             throw error;

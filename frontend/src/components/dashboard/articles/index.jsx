@@ -7,6 +7,7 @@ import PaginateComponent from './paginate';
 import {
   getPaginateArticles,
   changeStatusArticle,
+  removeArticle,
 } from '../../../store/actions/articles';
 
 import {
@@ -53,8 +54,9 @@ const AdminArticles = () => {
   };
 
   const handleDelete = () => {
-    //alert(toRemove);
-    //dispatch
+    dispatch(removeArticle(toRemove))
+      .unwrap()
+      .finally(() => {});
   };
 
   ///////////
