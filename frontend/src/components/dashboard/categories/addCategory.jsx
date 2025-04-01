@@ -1,5 +1,5 @@
 const AdminCategories = () => {
-    return (<>Admin categories</>)
+    return (<>Admin categories!!!</>)
 }
 
 export default AdminCategories;
