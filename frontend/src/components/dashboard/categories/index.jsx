@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AdminTitle } from "../../../utils/tools";
 import { Table, Row, Col } from "react-bootstrap";
+//up
 
 import { getCategories } from '../../../store/actions/articles';
 
