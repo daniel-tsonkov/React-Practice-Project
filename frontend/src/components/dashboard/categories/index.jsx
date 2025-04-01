@@ -10,15 +10,30 @@ const AdminCategories = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getCategories());
-    }, [dispatch])
+        dispatch(getCategories({}));
+    },[dispatch])
 
     return (
     <>
    <AdminTitle title="Categories" />
    <Row>
     <Col>
-        table
+        <Table striped bordered hover>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {articles.categories ?
+                articles.categories.map(item => (
+                    <tr key={item._id}>
+                        <td>{item.name}</td>
+                    </tr>
+                ))
+            : null}
+            </tbody>
+        </Table>
     </Col>
     <Col>
         input
