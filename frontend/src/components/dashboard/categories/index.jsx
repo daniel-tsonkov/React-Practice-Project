@@ -4,44 +4,42 @@ import { AdminTitle } from "../../../utils/tools";
 import { Table, Row, Col } from "react-bootstrap";
 //up
 
-import { getCategories } from '../../../store/actions/articles';
+import { getCategories } from "../../../store/actions/articles";
 
 const AdminCategories = () => {
-    const articles = useSelector(state => state.articles);
-    const dispatch = useDispatch();
+  const articles = useSelector((state) => state.articles);
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getCategories({}));
-    },[dispatch])
+  useEffect(() => {
+    dispatch(getCategories({}));
+  }, [dispatch]);
 
-    return (
+  return (
     <>
-   <AdminTitle title="Categories" />
-   <Row>
-    <Col>
-        <Table striped bordered hover>
+      <AdminTitle title="Categories" />
+      <Row>
+        <Col>
+          <Table striped bordered hover>
             <thead>
-                <tr>
-                    <th>Name</th>
-                </tr>
+              <tr>
+                <th>Name</th>
+              </tr>
             </thead>
             <tbody>
-                {articles.categories ?
-                articles.categories.map(item => (
+              {articles.categories
+                ? articles.categories.map((item) => (
                     <tr key={item._id}>
-                        <td>{item.name}</td>
+                      <td>{item.name}</td>
                     </tr>
-                ))
-            : null}
+                  ))
+                : null}
             </tbody>
-        </Table>
-    </Col>
-    <Col>
-        input
-    </Col>
-   </Row>
+          </Table>
+        </Col>
+        <Col>input</Col>
+      </Row>
     </>
-    )
-}
+  );
+};
 
 export default AdminCategories;

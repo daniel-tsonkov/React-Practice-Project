@@ -1,5 +1,5 @@
-const AdminCategories = () => {
-    return (<>Admin categories!!!</>)
-}
+return (AddCategories = () => {
+  return <>form</>;
+});
 
-export default AdminCategories;
+export default AddCategories;
