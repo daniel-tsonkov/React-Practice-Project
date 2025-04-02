@@ -5,6 +5,7 @@ import { Table, Row, Col } from "react-bootstrap";
 //up
 
 import { getCategories } from "../../../store/actions/articles";
+import AddCategories from "./addCategory";
 
 const AdminCategories = () => {
   const articles = useSelector((state) => state.articles);
@@ -36,7 +37,10 @@ const AdminCategories = () => {
             </tbody>
           </Table>
         </Col>
-        <Col>input</Col>
+        <Col>
+          <AddCategories />
+        </Col>
+        
       </Row>
     </>
   );
