@@ -16,7 +16,17 @@ const AddCategories = () => {
       console.log(values);
     },
   });
-  return <>form</>;
+  return (
+    <>
+      <form onSubmit={formik.handleSubmit}>
+        <div className="form-group">
+            <TextField
+            style={{width: '100'}}
+            />
+        </div>
+      </form>
+    </>
+  );
 };
 
 export default AddCategories;
