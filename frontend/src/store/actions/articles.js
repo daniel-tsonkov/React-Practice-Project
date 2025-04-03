@@ -166,3 +166,16 @@ export const addCategory = createAsyncThunk(
     }
   }
 );
+
+export const homeLoadMore = createAsyncThunk(
+    "articles/homeLoadMore",
+    async (sort, { dispatch, getState }) => {
+      try {
+        const articles = await axios.post(`/articles/all`, sort);
+        
+      } catch (error) {
+        dispatch(errorGlobal(error.response.data.message));
+        throw error;
+      }
+    }
+  );
