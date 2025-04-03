@@ -20,10 +20,16 @@ const AddCategories = () => {
     <>
       <form onSubmit={formik.handleSubmit}>
         <div className="form-group">
-            <TextField
-            style={{width: '100'}}
-            />
+          <TextField
+            style={{ width: "100%" }}
+            name="name"
+            label="Enter a category name"
+            variant="outlined"
+            {...formik.getFieldProps("name")}
+            {...errorHelper(formik, "name")}
+          />
         </div>
+        <Button variant="contained" colort="primary" type="submit">Add category</Button>
       </form>
     </>
   );
