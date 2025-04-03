@@ -1,6 +1,7 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
+import { addCategory } from "../../../store/actions/articles";
 import { errorHelper } from "../../../utils/tools";
 import { TextField, Button } from "@mui/material";
 
@@ -13,7 +14,8 @@ const AddCategories = () => {
       name: Yup.string().required("The name is required"),
     }),
     onSubmit: (values, { resetForm }) => {
-      console.log(values);
+      dispatch(addCategory(values));
+      resetForm();
     },
   });
   return (
@@ -29,7 +31,9 @@ const AddCategories = () => {
             {...errorHelper(formik, "name")}
           />
         </div>
-        <Button variant="contained" colort="primary" type="submit">Add category</Button>
+        <Button variant="contained" colort="primary" type="submit">
+          Add category
+        </Button>
       </form>
     </>
   );

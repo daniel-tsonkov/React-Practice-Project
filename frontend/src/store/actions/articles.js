@@ -159,6 +159,8 @@ export const addCategory = createAsyncThunk(
 
       dispatch(updateCategories(newState));
       dispatch(successGlobal('Category created !!'))
+
+      return newState;
     } catch (error) {
       dispatch(errorGlobal(error.response.data.message));
       throw error;
