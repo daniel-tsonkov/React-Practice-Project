@@ -2,6 +2,8 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { errorGlobal, successGlobal } from "../reducers/notifications";
 import { getAuthHeader } from "../../utils/tools";
 
+import { updateCategories } from "../reducers/articles";
+
 import axios from "axios";
 
 export const addArticle = createAsyncThunk(
@@ -153,7 +155,10 @@ export const addCategory = createAsyncThunk(
       const state = getState().articles.categories;
 
       const prevState = [...state];
-      const newState = [...prevState, category.data]
+      const newState = [...prevState, category.data];
+
+      dispatch(updateCategories(newState));
+      dispatch(successGlobal('Category created !!'))
     } catch (error) {
       dispatch(errorGlobal(error.response.data.message));
       throw error;
