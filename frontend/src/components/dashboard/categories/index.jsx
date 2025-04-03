@@ -1,11 +1,11 @@
 import { useEffect } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { AdminTitle } from "../../../utils/tools";
 import { Table, Row, Col } from "react-bootstrap";
-//up
 
 import { getCategories } from "../../../store/actions/articles";
-import AddCategories from "./addCategory";
+import AddCategory from "./addCategory";
 
 const AdminCategories = () => {
   const articles = useSelector((state) => state.articles);
@@ -38,9 +38,8 @@ const AdminCategories = () => {
           </Table>
         </Col>
         <Col>
-          <AddCategories />
+          <AddCategory />
         </Col>
-        
       </Row>
     </>
   );

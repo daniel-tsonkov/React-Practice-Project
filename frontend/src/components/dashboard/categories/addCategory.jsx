@@ -1,12 +1,15 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { errorHelper } from "../../../utils/tools";
+
 import { useDispatch } from "react-redux";
 import { addCategory } from "../../../store/actions/articles";
-import { errorHelper } from "../../../utils/tools";
+
 import { TextField, Button } from "@mui/material";
 
-const AddCategories = () => {
+const AddCategory = () => {
   const dispatch = useDispatch();
+
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: { name: "" },
@@ -18,6 +21,7 @@ const AddCategories = () => {
       resetForm();
     },
   });
+
   return (
     <>
       <form onSubmit={formik.handleSubmit}>
@@ -25,7 +29,7 @@ const AddCategories = () => {
           <TextField
             style={{ width: "100%" }}
             name="name"
-            label="Enter a category name"
+            label="Enter a name"
             variant="outlined"
             {...formik.getFieldProps("name")}
             {...errorHelper(formik, "name")}
@@ -39,4 +43,4 @@ const AddCategories = () => {
   );
 };
 
-export default AddCategories;
+export default AddCategory;

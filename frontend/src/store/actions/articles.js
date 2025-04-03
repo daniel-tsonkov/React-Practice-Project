@@ -147,7 +147,7 @@ export const addCategory = createAsyncThunk(
   async (data, { dispatch, getState }) => {
     try {
       const category = await axios.post(
-        "api/articles/categories",
+        "/api/articles/categories",
         data,
         getAuthHeader()
       );
@@ -158,8 +158,7 @@ export const addCategory = createAsyncThunk(
       const newState = [...prevState, category.data];
 
       dispatch(updateCategories(newState));
-      dispatch(successGlobal('Category created !!'))
-
+      dispatch(successGlobal("Category create !!"));
       return newState;
     } catch (error) {
       dispatch(errorGlobal(error.response.data.message));
