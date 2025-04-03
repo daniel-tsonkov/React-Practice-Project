@@ -168,14 +168,19 @@ export const addCategory = createAsyncThunk(
 );
 
 export const homeLoadMore = createAsyncThunk(
-    "articles/homeLoadMore",
-    async (sort, { dispatch, getState }) => {
-      try {
-        const articles = await axios.post(`/articles/all`, sort);
-        
-      } catch (error) {
-        dispatch(errorGlobal(error.response.data.message));
-        throw error;
-      }
+  "articles/homeLoadMore",
+  async (sort, { dispatch, getState }) => {
+    try {
+      const articles = await axios.post(`/articles/all`, sort);
+      const state = getState().articles.articles;
+
+      const prevState = [...state];
+      const newState = [...prevState, ...articles.data];
+
+      return { newState, sort };
+    } catch (error) {
+      dispatch(errorGlobal(error.response.data.message));
+      throw error;
     }
-  );
+  }
+);
