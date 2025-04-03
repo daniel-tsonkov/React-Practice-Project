@@ -4,6 +4,7 @@ import {
   addArticle,
   getPaginateArticles,
   changeStatusArticle,
+  homeLoadMore,
 } from "../actions/articles";
 
 export const articlesSlice = createSlice({
@@ -48,6 +49,11 @@ export const articlesSlice = createSlice({
       })
       .addCase(getPaginateArticles.rejected, (state, action) => {
         state.loading = false;
+      })
+      ///HOME LOAD MORE
+      .addCase(homeLoadMore.fulfilled, (state, action) => {
+        state.homeSort.skip = action.payload.sort.skip;
+        state.articles = action.payload.newState;
       })
       /// CHANGE STATUS ARTICLE
       .addCase(changeStatusArticle.fulfilled, (state, action) => {
