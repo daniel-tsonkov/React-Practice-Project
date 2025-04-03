@@ -150,7 +150,10 @@ export const addCategory = createAsyncThunk(
         getAuthHeader()
       );
 
-      const state = getState()
+      const state = getState().articles.categories;
+
+      const prevState = [...state];
+      const newState = [...prevState, category.data]
     } catch (error) {
       dispatch(errorGlobal(error.response.data.message));
       throw error;
