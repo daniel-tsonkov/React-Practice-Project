@@ -171,7 +171,7 @@ export const homeLoadMore = createAsyncThunk(
   "articles/homeLoadMore",
   async (sort, { dispatch, getState }) => {
     try {
-      const articles = await axios.post(`/articles/all`, sort);
+      const articles = await axios.post(`/api/articles/all`, sort);
       const state = getState().articles.articles;
 
       const prevState = [...state];

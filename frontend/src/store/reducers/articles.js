@@ -50,7 +50,7 @@ export const articlesSlice = createSlice({
       .addCase(getPaginateArticles.rejected, (state, action) => {
         state.loading = false;
       })
-      ///HOME LOAD MORE
+      // HOME LOAD MORE
       .addCase(homeLoadMore.fulfilled, (state, action) => {
         state.homeSort.skip = action.payload.sort.skip;
         state.articles = action.payload.newState;
