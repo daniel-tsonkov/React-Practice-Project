@@ -23,6 +23,16 @@ const Home = () => {
 
   return (
     <>
+      <Grid container spacing={2} className="article_card">
+        {articles && articles.articles
+          ? articles.articles.map((item) => (
+              <Grid key={item._id} item xs={12} sm={6} lg={3}>
+                AAA
+              </Grid>
+            ))
+          : null}
+      </Grid>
+      <hr />
       <Button variant="outlined" onClick={getNextArticles}>
         Load more
       </Button>
