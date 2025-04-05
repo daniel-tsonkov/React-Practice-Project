@@ -5,6 +5,7 @@ import {
   getPaginateArticles,
   changeStatusArticle,
   homeLoadMore,
+  getArticle,
 } from "../actions/articles";
 
 export const articlesSlice = createSlice({
@@ -58,6 +59,17 @@ export const articlesSlice = createSlice({
       /// CHANGE STATUS ARTICLE
       .addCase(changeStatusArticle.fulfilled, (state, action) => {
         state.adminArticles.docs = action.payload;
+      })
+      /// GET ARTICLE
+      .addCase(getArticle.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getArticle.fulfilled, (state, action) => {
+        state.loading = false;
+        state.current = action.payload;
+      })
+      .addCase(getArticle.rejected, (state, action) => {
+        state.loading = false;
       })
       /// GET CATEGORY
       .addCase(getCategories.fulfilled, (state, action) => {
