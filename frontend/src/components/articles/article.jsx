@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getArticle } from "../../store/actions/articles";
 import { Loader } from "../../utils/tools";
+import ScoreCard from "../../utils/scoreCard";
 
 const Article = () => {
   const articles = useSelector((state) => state.articles);
@@ -29,6 +30,7 @@ const Article = () => {
               dangerouslySetInnerHTML={{ __html: articles.current.content }}
             ></div>
           </div>
+          <ScoreCard />
         </div>
       ) : (
         <Loader />
