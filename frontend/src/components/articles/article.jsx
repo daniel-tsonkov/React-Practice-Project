@@ -1,10 +1,18 @@
-import { useDispatch } from 'react-redux';
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { getArticle } from "../../store/actions/articles";
 
 const Article = () => {
-    const dispatch = useDispatch();
-    const { id } = useParams();
-    return <></>
-}
+  const articles = useSelector((state) => state.articles);
+  const dispatch = useDispatch();
+  const { id } = useParams();
 
-export default Article; 
+  useEffect(() => {
+    dispatch(getArticle(id));
+  }, id);
+
+  return <></>;
+};
+
+export default Article;
