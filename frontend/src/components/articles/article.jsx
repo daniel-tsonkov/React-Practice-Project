@@ -30,7 +30,7 @@ const Article = () => {
               dangerouslySetInnerHTML={{ __html: articles.current.content }}
             ></div>
           </div>
-          <ScoreCard />
+          <ScoreCard current={articles.current} />
         </div>
       ) : (
         <Loader />
