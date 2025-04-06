@@ -48,6 +48,15 @@ const ScoreCard = ({ current }) => {
             ))}
           </div>
         </ListItem>
+        <Divider variant="inset" component="li" />
+        <ListItem>
+          <ListItemAvatar>
+            <Avatar>
+              <MovieIcon />
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText primary="Director" secondary={current.director} />
+        </ListItem>
       </List>
     </>
   );
