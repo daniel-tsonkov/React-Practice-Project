@@ -10,6 +10,7 @@ import Home from "./components/home";
 import Header from "./components/navigation/header";
 import Auth from "./components/auth";
 import Article from "./components/articles/article";
+import AccountVerify from "./components/auth/verification";
 
 import Dashboard from "./components/dashboard";
 import DashboardMain from "./components/dashboard/main";
@@ -59,6 +60,7 @@ const Router = () => {
                 />
                 <Route path="categories" element={<AdminCategories />} />
               </Route>
+              <Route path="/verification" element={<AccountVerify />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/articles/article/:id" element={<Article />} />
               <Route path="/" element={<Home />} />

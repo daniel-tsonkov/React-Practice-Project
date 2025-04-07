@@ -1,7 +1,11 @@
-import {Loader} from '../../utils/tools';
+import { Loader } from "../../utils/tools";
 
 const AccountVerify = () => {
-    return<></>
-}
+  return (
+    <>
+      <Loader />
+    </>
+  );
+};
 
 export default AccountVerify;
