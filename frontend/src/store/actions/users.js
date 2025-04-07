@@ -63,3 +63,14 @@ export const signOut = createAsyncThunk(
         removeTokenCookie();
     }
 )
+
+export const accountVerify = createAsyncThunk(
+    'users/accountVerify',
+    async()=>{
+        try{
+            
+        }catch(error){
+            throw error;
+        }
+    }
+)
