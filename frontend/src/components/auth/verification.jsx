@@ -3,6 +3,8 @@ import { Loader } from "../../utils/tools";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
+import { accountVerify } from "../../store/actions/users";
+
 const AccountVerify = () => {
   const dispatch = useDispatch();
   const [search, setSearch] = useSearchParams();
@@ -11,6 +13,11 @@ const AccountVerify = () => {
 
   useEffect(() => {
     if (token) {
+      dispatch(accountVerify(token))
+        .unwrap()
+        .finally(() => {
+          navigate("/");
+        });
     } else {
       navigate("/");
     }

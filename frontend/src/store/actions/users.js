@@ -65,6 +65,8 @@ export const accountVerify = createAsyncThunk(
       if (user) {
         dispatch(setVerify());
       }
+
+      dispatch(successGlobal('Account verified !!!'));
     } catch (error) {
       dispatch(errorGlobal(error.response.data.message));
       throw error;
