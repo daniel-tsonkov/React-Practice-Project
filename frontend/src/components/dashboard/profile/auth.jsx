@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import EmailStepper from './stepper/email';
 
 import Modal from "react-bootstrap/Modal";
 
@@ -35,7 +36,7 @@ const AuthProfile = () => {
           <Modal.Title>Update your email</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {/* <EmailStepper /> */}
+          <EmailStepper />
         </Modal.Body>
       </Modal>
     </div>
