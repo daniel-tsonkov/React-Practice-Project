@@ -1,5 +1,11 @@
-const AdminProfile = () => {
-    return <>Profile</>
-}
+import { AdminTitle } from "../../../utils/tools";
 
-export default AdminProfile
+const AdminProfile = () => {
+  return (
+    <>
+      <AdminTitle title="Profile" />
+    </>
+  );
+};
+
+export default AdminProfile;
