@@ -54,15 +54,22 @@ const EmailStepper = ({ user, closeModal }) => {
       {user.loading ? (
         <Loader />
       ) : (
-        <Stepper activeStep={activeStep}>
-          {steps.map((label) => {
-            return (
-              <Step key={label}>
-                <StepLabel>{label}</StepLabel>
-              </Step>
-            );
-          })}
-        </Stepper>
+        <>
+          <Stepper activeStep={activeStep}>
+            {steps.map((label) => {
+              return (
+                <Step key={label}>
+                  <StepLabel>{label}</StepLabel>
+                </Step>
+              );
+            })}
+          </Stepper>
+          <form className="mt-3 stepper_form" onSubmit={formik.handleSubmit}>
+            {activeStep === 0 ? <></> : null}
+            {activeStep === 1 ? <></> : null}
+            {activeStep === 2 ? <></> : null}
+          </form>
+        </>
       )}
     </>
   );
