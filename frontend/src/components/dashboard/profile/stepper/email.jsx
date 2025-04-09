@@ -49,7 +49,23 @@ const EmailStepper = ({ user, closeModal }) => {
     </Button>;
   };
 
-  return <>stepper</>;
+  return (
+    <>
+      {user.loading ? (
+        <Loader />
+      ) : (
+        <Stepper activeStep={activeStep}>
+          {steps.map((label) => {
+            return (
+              <Step key={label}>
+                <StepLabel>{label}</StepLabel>
+              </Step>
+            );
+          })}
+        </Stepper>
+      )}
+    </>
+  );
 };
 
 export default EmailStepper;
